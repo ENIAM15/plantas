@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparador de Portadas Tabloide · Huerto Escolar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-left h1 {
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-left p {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      background: #0f172a;
+      padding: 4px;
+      border-radius: 8px;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: #10b981;
+      color: #ffffff;
+    }
+    .main-view {
+      flex: 1;
+      display: flex;
+      width: 100%;
+      height: calc(100vh - 75px);
+    }
+    .preview-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #fff;
+    }
+    .split-view {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      height: 100%;
+      gap: 2px;
+      background: #334155;
+    }
+    .split-col {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: #1e293b;
+    }
+    .col-header {
+      padding: 10px 18px;
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .btn-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <h1>🌱 Huerto Escolar Demostrativo · Comparador de Portadas Tabloide</h1>
+      <p>Proyecto: "Del huerto a la red: medicina que se cultiva" · Elige la mejor propuesta para presentar a tu jefe</p>
+    </div>
+
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="setView('split')">Comparativa Lado a Lado</button>
+      <button class="tab-btn" onclick="setView('op1')">Solo Opción 1 (Sangre Total)</button>
+      <button class="tab-btn" onclick="setView('op2')">Solo Opción 2 (Marco de Lujo)</button>
+    </div>
+  </header>
+
+  <div class="main-view" id="content-container">
+    <!-- VISTA POR DEFECTO: SPLIT VIEW -->
+    <div class="split-view" id="split-container">
+      <div class="split-col">
+        <div class="col-header">
+          <span>OPCIÓN 1: Portada a Sangre Total (Estilo National Geographic)</span>
+          <a class="btn-link" href="opcion1_portada_sangre_total.html" target="_blank">Abrir en pestaña nueva ↗</a>
+        </div>
+        <iframe class="preview-frame" src="opcion1_portada_sangre_total.html"></iframe>
+      </div>
+
+      <div class="split-col">
+        <div class="col-header">
+          <span>OPCIÓN 2: Portada Editorial con Marco (Estilo Herbario de Lujo)</span>
+          <a class="btn-link" href="opcion2_portada_marco_editorial.html" target="_blank">Abrir en pestaña nueva ↗</a>
+        </div>
+        <iframe class="preview-frame" src="opcion2_portada_marco_editorial.html"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setView(mode) {
+      const container = document.getElementById('content-container');
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+
+      if (mode === 'split') {
+        buttons[0].classList.add('active');
+        container.innerHTML = `
+          <div class="split-view">
+            <div class="split-col">
+              <div class="col-header">
+                <span>OPCIÓN 1: Portada a Sangre Total (Estilo National Geographic)</span>
+                <a class="btn-link" href="opcion1_portada_sangre_total.html" target="_blank">Abrir pestaña ↗</a>
+              </div>
+              <iframe class="preview-frame" src="opcion1_portada_sangre_total.html"></iframe>
+            </div>
+            <div class="split-col">
+              <div class="col-header">
+                <span>OPCIÓN 2: Portada Editorial con Marco (Estilo Herbario de Lujo)</span>
+                <a class="btn-link" href="opcion2_portada_marco_editorial.html" target="_blank">Abrir pestaña ↗</a>
+              </div>
+              <iframe class="preview-frame" src="opcion2_portada_marco_editorial.html"></iframe>
+            </div>
+          </div>
+        `;
+      } else if (mode === 'op1') {
+        buttons[1].classList.add('active');
+        container.innerHTML = `<iframe class="preview-frame" src="opcion1_portada_sangre_total.html"></iframe>`;
+      } else if (mode === 'op2') {
+        buttons[2].classList.add('active');
+        container.innerHTML = `<iframe class="preview-frame" src="opcion2_portada_marco_editorial.html"></iframe>`;
+      }
+    }
+  </script>
+
+</body>
+</html>

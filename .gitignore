@@ -1,0 +1,13 @@
+# Dependencias
+node_modules/
+
+# Archivos temporales y de depuración
+*.tmp
+edge_err.txt
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Configuraciones de editor
+.vscode/
+.idea/

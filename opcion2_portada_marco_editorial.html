@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opción 2: Portada Editorial con Marco de Colección (Estilo Herbario de Lujo) - Tabloide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --tabloid-w: 279.4mm;
+      --tabloid-h: 431.8mm;
+      --color-parchment: #fdfbf7;
+      --color-forest: #16382b;
+      --color-forest-dark: #0d231b;
+      --color-gold-leaf: #9e7339;
+      --color-gold-bg: #f9f5eb;
+      --color-sand: #e8dec8;
+      --color-text: #222222;
+      --color-muted: #555555;
+      
+      --font-display: 'Cinzel', 'Playfair Display', serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      background-color: #1e1e1e;
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 10px;
+      gap: 35px;
+    }
+
+    /* BARRA SUPERIOR DE CONTROL */
+    .top-bar {
+      width: 100%;
+      max-width: var(--tabloid-w);
+      background: #2b2b2b;
+      border: 1px solid #444;
+      border-radius: 12px;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .pill-tag {
+      background: #c59b27;
+      color: #000;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      background: #166534;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover { background: #14532d; }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #888;
+      color: #ddd;
+    }
+    .btn-outline:hover { background: #3a3a3a; }
+
+    /* =========================================================
+       HOJA 1: PORTADA EDITORIAL CON MARCO DE COLECCIÓN BOTÁNICA
+       ========================================================= */
+    .tabloid-sheet {
+      width: var(--tabloid-w);
+      height: var(--tabloid-h);
+      background: var(--color-parchment);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      page-break-after: always;
+      break-after: page;
+      padding: 14mm 14mm 12mm 14mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* DOBLE MARCO CLÁSICO EDITORIAL (FILETE DORADO Y VERDE BOSQUE) */
+    .editorial-outer-border {
+      position: absolute;
+      top: 6mm;
+      left: 6mm;
+      right: 6mm;
+      bottom: 6mm;
+      border: 3px solid var(--color-forest);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .editorial-inner-border {
+      position: absolute;
+      top: 8.5mm;
+      left: 8.5mm;
+      right: 8.5mm;
+      bottom: 8.5mm;
+      border: 1px solid var(--color-gold-leaf);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* 1. ENCABEZADO HERBARIO / MASTHEAD BOTÁNICO */
+    .herbario-masthead {
+      text-align: center;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--color-sand);
+      position: relative;
+    }
+
+    .herbario-small-label {
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--color-gold-leaf);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .herbario-main-title {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--color-forest);
+      letter-spacing: 4px;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .herbario-motto {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 13.5px;
+      color: var(--color-forest-dark);
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .edition-number-stamp {
+      position: absolute;
+      right: 0;
+      top: 0;
+      border: 1.5px solid var(--color-gold-leaf);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--color-forest);
+      background: var(--color-gold-bg);
+    }
+
+    /* 2. VENTANA FOTOGRÁFICA HERO (OCUPA EL ESPACIO CENTRAL) */
+    .herbario-photo-frame {
+      position: relative;
+      width: 100%;
+      height: 195mm; /* Gran ventana vertical */
+      margin: 10px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid var(--color-forest);
+      box-shadow: 0 10px 30px rgba(22, 56, 43, 0.15);
+    }
+
+    .herbario-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* PLACA SUPERPUESTA EN LA BASE DE LA FOTO (NOMBRE DE LA PLANTA) */
+    .plant-title-plate {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, rgba(13, 35, 27, 0.96) 0%, rgba(13, 35, 27, 0.8) 70%, transparent 100%);
+      padding: 24px 24px 14px 24px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .plant-name-group h2 {
+      font-family: var(--font-serif);
+      font-size: 46px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .plant-latin-desc {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 16px;
+      color: #fce7b2;
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .plant-curator-seal {
+      border: 1px dashed #fce7b2;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: #fce7b2;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* 3. BLOQUE INFERIOR DE 2 COLUMNAS (REMEDIO + QR) */
+    .herbario-bottom-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 16px;
+      align-items: stretch;
+      margin-top: 2px;
+    }
+
+    /* TARJETA BOTÁNICA DE REMEDIO */
+    .herbario-remedy-card {
+      background: #ffffff;
+      border: 1.5px solid var(--color-sand);
+      border-left: 5px solid var(--color-forest);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .remedy-badge-gold {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--color-gold-leaf);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .remedy-headline-serif {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-forest);
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .remedy-body-serif {
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .herbario-specs-row {
+      display: flex;
+      gap: 14px;
+      border-top: 1px dashed var(--color-sand);
+      padding-top: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-forest);
+    }
+
+    .spec-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* TARJETA QR EDITORIAL */
+    .herbario-qr-card {
+      background: var(--color-gold-bg);
+      border: 1.5px solid var(--color-gold-leaf);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .qr-stamp-title {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--color-forest);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .qr-frame-white {
+      width: 145px;
+      height: 145px;
+      background: #ffffff;
+      padding: 6px;
+      border: 1px solid var(--color-sand);
+      border-radius: 8px;
+    }
+
+    .qr-frame-white svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .qr-desc-small {
+      font-size: 11px;
+      color: #555;
+      line-height: 1.25;
+      margin-top: 4px;
+    }
+
+    .qr-desc-small strong {
+      color: var(--color-forest);
+      display: block;
+      font-size: 11.5px;
+    }
+
+    /* PIE DE PORTADA */
+    .herbario-footer {
+      border-top: 1.5px solid var(--color-sand);
+      padding-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: var(--color-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .herbario-footer strong {
+      color: var(--color-forest);
+    }
+
+    /* =========================================================
+       HOJA 2: FICHA TÉCNICA EXTENDIDA
+       ========================================================= */
+    .sheet2-page {
+      background: #ffffff;
+      padding: 14mm 14mm 12mm 14mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sheet2-top {
+      border-bottom: 2px solid var(--color-forest);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .sheet2-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      flex: 1;
+      margin-bottom: 12px;
+    }
+
+    .card {
+      background: var(--color-parchment);
+      border: 1px solid var(--color-sand);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card.full { grid-column: 1 / -1; }
+
+    .card h3 {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-forest);
+      border-bottom: 1px solid var(--color-sand);
+      padding-bottom: 4px;
+    }
+
+    .card p {
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .cult-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 11px;
+      color: #333;
+    }
+
+    .cult-list strong { color: var(--color-forest); }
+
+    .table-eco {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+    }
+
+    .table-eco th {
+      background: #eee7d7;
+      color: var(--color-forest);
+      text-align: left;
+      padding: 6px 8px;
+      font-size: 10px;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--color-sand);
+    }
+
+    .table-eco td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #eee7d7;
+      color: #333;
+    }
+
+    .caution-panel {
+      background: #fdf2f2;
+      border: 1.5px solid #f8b4b4;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 10.5px;
+      color: #771d1d;
+    }
+
+    .pedagogy-panel {
+      background: #edf7f2;
+      border: 1px solid #b7dfca;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 10.5px;
+      color: #0b4e33;
+    }
+
+    @media print {
+      body { background: transparent; padding: 0; gap: 0; }
+      .top-bar { display: none !important; }
+      .tabloid-sheet {
+        margin: 0;
+        box-shadow: none;
+        width: 100%;
+        height: 100%;
+        page-break-after: always;
+        break-after: page;
+      }
+      @page {
+        size: tabloid portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE ACCIÓN Y COMPARATIVA -->
+  <div class="top-bar">
+    <div>
+      <span class="pill-tag">OPCIÓN 2</span>
+      <strong style="margin-left: 10px;">Portada Editorial con Marco de Colección (Estilo Herbario de Lujo)</strong>
+    </div>
+    <div class="btn-group">
+      <a href="opcion1_portada_sangre_total.html" class="btn btn-outline" style="text-decoration:none;">
+        ← Ver Opción 1 (Sangre Total)
+      </a>
+      <button class="btn" onclick="window.print()">
+        Imprimir Tabloide (11x17")
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       HOJA 1: PORTADA EDITORIAL CON MARCO DE COLECCIÓN (OPCIÓN 2)
+       ========================================================================= -->
+  <div class="tabloid-sheet" id="hoja-1">
+    
+    <!-- DOBLE FILETE PERIMETRAL DE LUJO -->
+    <div class="editorial-outer-border"></div>
+    <div class="editorial-inner-border"></div>
+
+    <!-- 1. ENCABEZADO HERBARIO / MASTHEAD -->
+    <header class="herbario-masthead">
+      <div class="herbario-small-label">Catálogo Botánico Escolar · Ficha 01</div>
+      <h1 class="herbario-main-title">HUERTO ESCOLAR DEMOSTRATIVO</h1>
+      <div class="herbario-motto">"Del huerto a la red: medicina que se cultiva"</div>
+      <div class="edition-number-stamp">EJEMPLAR N° 01</div>
+    </header>
+
+    <!-- 2. VENTANA FOTOGRÁFICA HERO CON PLACA SUPERPUESTA -->
+    <div class="herbario-photo-frame">
+      <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1500&q=85" 
+           alt="Maguey Verde - Ejemplar en Huerto"
+           onerror="this.src='https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1500&q=85'">
+      
+      <div class="plant-title-plate">
+        <div class="plant-name-group">
+          <h2>MAGUEY VERDE</h2>
+          <div class="plant-latin-desc">Agave salmiana / Agave americana · Familia Asparagaceae</div>
+        </div>
+        <div class="plant-curator-seal">Muestra de Stand</div>
+      </div>
+    </div>
+
+    <!-- 3. BLOQUE INFERIOR: REMEDIO TRADICIONAL + QR CODE -->
+    <section class="herbario-bottom-grid">
+      
+      <!-- TARJETA DEL REMEDIO DESTACADO -->
+      <article class="herbario-remedy-card">
+        <div>
+          <div class="remedy-badge-gold">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+            Remedio Tradicional Destacado
+          </div>
+          <h3 class="remedy-headline-serif">Bálsamo Dérmico Cicatrizante</h3>
+          <p class="remedy-body-serif">
+            La pulpa interna y savia diluida del maguey han sido utilizadas tradicionalmente en comunidades campesinas para <strong>acelerar la regeneración dérmica en heridas superficiales y raspaduras</strong>, aportando una película antiséptica y emoliente.
+          </p>
+        </div>
+
+        <div class="herbario-specs-row">
+          <div class="spec-item">💧 Riego: Mínimo</div>
+          <div class="spec-item">☀️ Exposición: Pleno Sol</div>
+          <div class="spec-item">⛰️ Suelo: Pedregoso y Drenado</div>
+        </div>
+      </article>
+
+      <!-- TARJETA QR DE ACCESO DIGITAL -->
+      <aside class="herbario-qr-card">
+        <div class="qr-stamp-title">Acceso Digital</div>
+        <div class="qr-frame-white">
+          <svg viewBox="0 0 100 100" fill="#16382b">
+            <rect x="5" y="5" width="26" height="26" rx="3"/>
+            <rect x="9" y="9" width="18" height="18" fill="#fff" rx="1"/>
+            <rect x="13" y="13" width="10" height="10"/>
+            
+            <rect x="69" y="5" width="26" height="26" rx="3"/>
+            <rect x="73" y="9" width="18" height="18" fill="#fff" rx="1"/>
+            <rect x="77" y="13" width="10" height="10"/>
+            
+            <rect x="5" y="69" width="26" height="26" rx="3"/>
+            <rect x="9" y="73" width="18" height="18" fill="#fff" rx="1"/>
+            <rect x="13" y="77" width="10" height="10"/>
+
+            <rect x="36" y="8" width="6" height="6"/>
+            <rect x="46" y="8" width="6" height="6"/>
+            <rect x="56" y="14" width="6" height="6"/>
+            <rect x="8" y="38" width="6" height="6"/>
+            <rect x="18" y="46" width="6" height="6"/>
+            <rect x="26" y="38" width="6" height="6"/>
+            <rect x="36" y="24" width="6" height="6"/>
+            <rect x="46" y="32" width="6" height="6"/>
+            <rect x="56" y="26" width="6" height="6"/>
+            <rect x="36" y="44" width="7" height="7"/>
+            <rect x="47" y="44" width="7" height="7"/>
+            <rect x="47" y="55" width="7" height="7"/>
+            <rect x="36" y="55" width="7" height="7"/>
+            <rect x="66" y="38" width="6" height="6"/>
+            <rect x="76" y="46" width="6" height="6"/>
+            <rect x="86" y="38" width="6" height="6"/>
+            <rect x="66" y="54" width="6" height="6"/>
+            <rect x="84" y="54" width="6" height="6"/>
+            <rect x="36" y="72" width="6" height="6"/>
+            <rect x="46" y="80" width="6" height="6"/>
+            <rect x="56" y="72" width="6" height="6"/>
+            <rect x="68" y="70" width="6" height="6"/>
+            <rect x="78" y="78" width="6" height="6"/>
+            <rect x="86" y="70" width="6" height="6"/>
+            <rect x="74" y="86" width="6" height="6"/>
+            <rect x="86" y="86" width="6" height="6"/>
+          </svg>
+        </div>
+        <div class="qr-desc-small">
+          <strong>Escanea con tu cámara</strong>
+          Guía de cultivo, cuidados y botánica
+        </div>
+      </aside>
+
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="herbario-footer">
+      <div>Exhibición Científica Escolar · Muestra Botánica Anual</div>
+      <div>Proyecto: <strong>Del huerto a la red: medicina que se cultiva</strong> · Ficha 1 de 2</div>
+    </footer>
+
+  </div>
+
+
+  <!-- =========================================================================
+       HOJA 2: FICHA TÉCNICA EXTENDIDA
+       ========================================================================= -->
+  <div class="tabloid-sheet sheet2-page" id="hoja-2">
+    
+    <div class="editorial-outer-border"></div>
+    <div class="editorial-inner-border"></div>
+
+    <header class="sheet2-top">
+      <div>
+        <div style="font-family: var(--font-display); font-size: 11px; letter-spacing: 2px; color: var(--color-gold-leaf);">
+          GUÍA DIGITAL Y FICHA TÉCNICA EXTENDIDA
+        </div>
+        <h2 style="font-family: var(--font-serif); font-size: 26px; color: var(--color-forest); font-weight: 800;">
+          MAGUEY VERDE (Agave spp.)
+        </h2>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--color-forest);">
+        HOJA 2 DE 2
+      </div>
+    </header>
+
+    <main class="sheet2-grid">
+      <article class="card">
+        <h3>1. Descripción Botánica y Morfología</h3>
+        <p>
+          El <strong>maguey verde</strong> es una planta suculenta perenne que forma una roseta basal masiva de hojas (pencas) alargadas y carnosas. Cuenta con una epidermis cutinizada con ceras protectoras que impiden la pérdida de agua. Sus bordes poseen espinas marginales curvadas y una fuerte espina terminal que defiende la reserva hídrica de la planta.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>2. Dónde y Cómo Plantarlo (Cultivo Escolar)</h3>
+        <div class="cult-list">
+          <div><strong>Luz y Clima:</strong> Pleno sol directo (mínimo 6-8 horas diarias). Tolera sequías severas.</div>
+          <div><strong>Sustrato:</strong> Terreno pedregoso, calizo o arenoso con drenaje perfecto para evitar pudrición radicular.</div>
+          <div><strong>Riego:</strong> Muy escaso. En huerto escolar, regar cada 2 o 3 semanas en época seca.</div>
+          <div><strong>Propagación:</strong> Por separación de hijuelos basales durante la primavera.</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>3. Principios Activos y Usos Medicinales</h3>
+        <p>
+          Rico en <strong>fructanos (inulinas), saponinas esteroidales y flavonoides</strong>:
+        </p>
+        <ul style="padding-left: 16px; font-size: 11px; color: #333; line-height: 1.4;">
+          <li><strong>Cicatrizante dérmico:</strong> Desinfección de raspones y quemaduras solares leves.</li>
+          <li><strong>Antiinflamatorio:</strong> Cataplasma tradicional de penca asada sobre golpes.</li>
+          <li><strong>Prebiótico:</strong> Extracción de inulinas para la salud digestiva.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>4. Ventajas Ecológicas en la Escuela</h3>
+        <table class="table-eco">
+          <thead>
+            <tr>
+              <th>Área</th>
+              <th>Función en el Huerto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Protección del Suelo</strong></td>
+              <td>Raíces que amarran la tierra y frenan la erosión hídrica y eólica.</td>
+            </tr>
+            <tr>
+              <td><strong>Cerca Viva</strong></td>
+              <td>Barrera perimetral natural que resguarda el huerto escolar sin alambres.</td>
+            </tr>
+            <tr>
+              <td><strong>Polinizadores</strong></td>
+              <td>En floración alimenta abejas nativas, colibríes y murciélagos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <div class="card full caution-panel">
+        <strong>⚠️ Protocolo de Seguridad y Manejo Responsable:</strong>
+        <p style="margin-top: 4px;">
+          La savia fresca contiene cristales de oxalato de calcio y saponinas irritantes. <strong>Es obligatorio usar guantes y gafas protectoras</strong> al podar o manipular la planta en la escuela. No ingerir preparados caseros sin control médico.
+        </p>
+      </div>
+
+      <div class="card full pedagogy-panel">
+        <strong>Propósito Pedagógico del Huerto:</strong>
+        Integrar el conocimiento popular tradicional con el método científico y las herramientas digitales, enseñando a los alumnos a investigar, cuidar y valorar el patrimonio biocultural de nuestra comunidad.
+      </div>
+    </main>
+
+    <footer class="herbario-footer">
+      <div>Huerto Escolar Demostrativo · Proyecto "Del huerto a la red"</div>
+      <div>Ficha Técnica de Consulta · Hoja 2 de 2</div>
+    </footer>
+
+  </div>
+
+</body>
+</html>

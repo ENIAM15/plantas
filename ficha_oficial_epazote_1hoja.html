@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha Oficial - Epazote - EMSaD 52</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       CALIBRACIÓN EXACTA AL MODELO ORIGINAL (1 SOLA PÁGINA ESTRICTA)
+       Formato: TABLOIDE / DOBLE CARTA (279.4mm x 431.8mm)
+       ========================================================= */
+    :root {
+      --color-page-bg: #edf2e8;
+      --color-green-dark: #143d2b;
+      --color-green-accent: #2e7d5a;
+      --color-text-dark: #1e293b;
+      --color-caution-bg: #fff5f5;
+      --color-caution-border: #ef4444;
+      --color-caution-text: #b91c1c;
+
+      --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    @page {
+      size: 279.4mm 431.8mm;
+      margin: 0;
+    }
+
+    html, body {
+      width: 279.4mm;
+      height: 431.8mm;
+      max-height: 431.8mm;
+      overflow: hidden;
+      background-color: var(--color-page-bg);
+      font-family: var(--font-sans);
+      color: var(--color-text-dark);
+      margin: 0;
+      padding: 0;
+    }
+
+    .single-page-sheet {
+      width: 279.4mm;
+      height: 431.8mm;
+      max-height: 431.8mm;
+      box-sizing: border-box;
+      padding: 8mm 13mm 6mm 13mm;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* 1. TIRA OFICIAL DE LOGOS ORIGINAL */
+    .header-logos-container {
+      background: #ffffff;
+      border-radius: 4px;
+      padding: 5px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      flex-shrink: 0;
+    }
+
+    .header-logos-container img {
+      width: 100%;
+      max-height: 40px;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* 2. BANNER EMSaD 52 (VERDE OSCURO) */
+    .banner-emsad {
+      background-color: var(--color-green-dark);
+      color: #ffffff;
+      text-align: center;
+      padding: 6px 12px;
+      margin-top: 5px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .banner-school-title {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+
+    .banner-project-sub {
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .banner-motto {
+      font-size: 11.8px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    /* 3. SUBTÍTULO: TESORO VIVO DE NUESTRA TIERRA */
+    .motto-tesoro-vivo {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--color-green-dark);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin: 5px 0 4px 0;
+      flex-shrink: 0;
+    }
+
+    /* 4. MARCO DE LA FOTOGRAFÍA (PLANTA SEMBRADA EN TIERRA) */
+    .photo-frame-container {
+      width: 100%;
+      height: 144mm;
+      border: 3px solid var(--color-green-dark);
+      background-color: #cbd5e1;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .photo-frame-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+    }
+
+    /* 5. FRANJA NOMBRE DE LA PLANTA (VERDE OSCURO) */
+    .plant-title-strip {
+      background-color: var(--color-green-dark);
+      color: #ffffff;
+      text-align: center;
+      padding: 7px 14px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .plant-name-heading {
+      font-family: var(--font-serif);
+      font-size: 31px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+
+    .plant-scientific-row {
+      font-size: 12px;
+      font-weight: 500;
+      color: #f1f5f9;
+      margin-top: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .plant-scientific-row span.latin {
+      font-style: italic;
+      font-family: var(--font-serif);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* 6. ZONA INFERIOR DE 2 TARJETAS (SABER TRADICIONAL + EXPLORA QR) */
+    .bottom-cards-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 0.82fr;
+      gap: 12px;
+      margin-top: 6px;
+      height: 135mm;
+      align-items: stretch;
+      flex-shrink: 0;
+    }
+
+    /* TARJETA IZQUIERDA: SABER TRADICIONAL */
+    .card-saber-tradicional {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .saber-title {
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--color-green-dark);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .remedy-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 1px;
+    }
+
+    .remedy-type-tag {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--color-green-accent);
+      margin-bottom: 4px;
+    }
+
+    .remedy-desc {
+      font-size: 10.8px;
+      line-height: 1.38;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .prep-question {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--color-green-dark);
+      margin-bottom: 3px;
+    }
+
+    .prep-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 10.3px;
+      line-height: 1.3;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .prep-list strong {
+      color: #0f172a;
+    }
+
+    .caution-box-wrapper {
+      background-color: var(--color-caution-bg);
+      border-left: 3.5px solid var(--color-caution-border);
+      padding: 6px 10px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .caution-heading {
+      font-size: 9.5px;
+      font-weight: 900;
+      color: var(--color-caution-text);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .caution-text {
+      font-size: 9.2px;
+      line-height: 1.25;
+      color: #7f1d1d;
+    }
+
+    /* TARJETA DERECHA: EXPLORA Y QR */
+    .card-explora-qr {
+      background-color: var(--color-green-dark);
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(20, 61, 43, 0.2);
+    }
+
+    .explora-main-heading {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .explora-sub-text {
+      font-size: 10.5px;
+      font-weight: 500;
+      color: #a7f3d0;
+      margin-top: 2px;
+    }
+
+    .qr-white-container {
+      width: 130px;
+      height: 130px;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .qr-white-container svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .escanea-word {
+      font-size: 11.5px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .escanea-sub {
+      font-size: 9px;
+      color: #a7f3d0;
+      margin-top: 1px;
+    }
+
+    /* 7. PIE DE PÁGINA */
+    .footer-line {
+      text-align: center;
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--color-green-dark);
+      text-transform: uppercase;
+      padding-top: 4px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="single-page-sheet">
+    
+    <!-- 1. TIRA OFICIAL DE LOGOS -->
+    <header class="header-logos-container">
+      <img src="logos_institucionales.png" alt="Gobierno de Tabasco · Secretaría de Educación · 50 Aniversario · COBATAB">
+    </header>
+
+    <!-- 2. BANNER EMSaD 52 -->
+    <section class="banner-emsad">
+      <div class="banner-school-title">EMSaD 52</div>
+      <div class="banner-project-sub">PROYECTO ESCOLAR • BOTÁNICA Y SABERES TRADICIONALES</div>
+      <div class="banner-motto">DEL HUERTO A LA RED: MEDICINA QUE SE CULTIVA</div>
+    </section>
+
+    <!-- 3. SUBTÍTULO: TESORO VIVO DE NUESTRA TIERRA -->
+    <div class="motto-tesoro-vivo">TESORO VIVO DE NUESTRA TIERRA</div>
+
+    <!-- 4. FOTOGRAFÍA DE LA PLANTA SEMBRADA EN TIERRA -->
+    <div class="photo-frame-container">
+      <img src="epazote_sembrado.jpg" alt="Epazote (Dysphania ambrosioides) sembrado en huerto">
+    </div>
+
+    <!-- 5. FRANJA NOMBRE DE LA PLANTA -->
+    <div class="plant-title-strip">
+      <div class="plant-name-heading">EPAZOTE</div>
+      <div class="plant-scientific-row">
+        <span class="latin">Dysphania ambrosioides</span> | Planta de nuestra riqueza natural
+      </div>
+    </div>
+
+    <!-- 6. ZONA INFERIOR DE 2 TARJETAS -->
+    <main class="bottom-cards-layout">
+      
+      <!-- SABER TRADICIONAL -->
+      <article class="card-saber-tradicional">
+        <div>
+          <div class="saber-title">SABER TRADICIONAL</div>
+          <div class="remedy-name">Infusión digestiva y antiflatulenta</div>
+          <div class="remedy-type-tag">Uso oral tradicional</div>
+          <p class="remedy-desc">
+            En la medicina tradicional se menciona el uso de las hojas de epazote, preparadas en infusión suave, para aliviar cólicos estomacales, indigestión, gases y ayudar a combatir parásitos intestinales.
+          </p>
+
+          <div class="prep-question">¿Cómo se prepara?</div>
+          <ol class="prep-list">
+            <li><strong>1. Cosechar:</strong> Cortar de 3 a 5 hojas frescas del huerto y lavarlas bien con agua limpia.</li>
+            <li><strong>2. Hervir:</strong> Poner a hervir una taza de agua potable y retirar del fuego al primer hervor.</li>
+            <li><strong>3. Reposar:</strong> Agregar las hojas, tapar de 3 a 5 minutos, colar y beber tibio con moderación.</li>
+          </ol>
+        </div>
+
+        <div class="caution-box-wrapper">
+          <div class="caution-heading">PRECAUCIÓN</div>
+          <div class="caution-text">
+            Contiene ascaridol. No consumir en exceso ni de forma prolongada. Contraindicado en mujeres embarazadas, en lactancia y en niños pequeños.
+          </div>
+        </div>
+      </article>
+
+      <!-- EXPLORA Y QR -->
+      <aside class="card-explora-qr">
+        <div>
+          <div class="explora-main-heading">EXPLORA</div>
+          <div class="explora-sub-text">y descubre más</div>
+        </div>
+
+        <div class="qr-white-container">
+          <svg viewBox="0 0 100 100" fill="#143d2b">
+            <rect x="5" y="5" width="26" height="26" rx="3"/>
+            <rect x="9" y="9" width="18" height="18" fill="#fff" rx="1"/>
+            <rect x="13" y="13" width="10" height="10"/>
+            
+            <rect x="69" y="5" width="26" height="26" rx="3"/>
+            <rect x="73" y="9" width="18" height="18" fill="#fff" rx="1"/>
+            <rect x="77" y="13" width="10" height="10"/>
+            
+            <rect x="5" y="69" width="26" height="26" rx="3"/>
+            <rect x="9" y="73" width="18" height="18" fill="#fff" rx="1"/>
+            <rect x="13" y="77" width="10" height="10"/>
+
+            <rect x="36" y="8" width="6" height="6"/>
+            <rect x="46" y="8" width="6" height="6"/>
+            <rect x="56" y="14" width="6" height="6"/>
+            <rect x="8" y="38" width="6" height="6"/>
+            <rect x="18" y="46" width="6" height="6"/>
+            <rect x="26" y="38" width="6" height="6"/>
+            <rect x="36" y="24" width="6" height="6"/>
+            <rect x="46" y="32" width="6" height="6"/>
+            <rect x="56" y="26" width="6" height="6"/>
+            <rect x="36" y="44" width="7" height="7"/>
+            <rect x="47" y="44" width="7" height="7"/>
+            <rect x="47" y="55" width="7" height="7"/>
+            <rect x="36" y="55" width="7" height="7"/>
+            <rect x="66" y="38" width="6" height="6"/>
+            <rect x="76" y="46" width="6" height="6"/>
+            <rect x="86" y="38" width="6" height="6"/>
+            <rect x="66" y="54" width="6" height="6"/>
+            <rect x="84" y="54" width="6" height="6"/>
+            <rect x="36" y="72" width="6" height="6"/>
+            <rect x="46" y="80" width="6" height="6"/>
+            <rect x="56" y="72" width="6" height="6"/>
+            <rect x="68" y="70" width="6" height="6"/>
+            <rect x="78" y="78" width="6" height="6"/>
+            <rect x="86" y="70" width="6" height="6"/>
+            <rect x="74" y="86" width="6" height="6"/>
+            <rect x="86" y="86" width="6" height="6"/>
+          </svg>
+        </div>
+
+        <div>
+          <div class="escanea-word">ESCANEA</div>
+          <div class="escanea-sub">para ver el proyecto completo</div>
+        </div>
+      </aside>
+
+    </main>
+
+    <!-- 7. PIE DE PÁGINA -->
+    <footer class="footer-line">
+      EMSaD 52 • DEL HUERTO A LA RED: MEDICINA QUE SE CULTIVA
+    </footer>
+
+  </div>
+
+</body>
+</html>

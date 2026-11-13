@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opción 1: Portada a Sangre Total (Estilo National Geographic) - Tabloide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Cinzel:wght@700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --tabloid-w: 279.4mm;
+      --tabloid-h: 431.8mm;
+      --color-gold: #f59e0b;
+      --color-gold-light: #fef3c7;
+      --color-emerald: #10b981;
+      --color-primary: #064e3b;
+      --color-primary-dark: #022c22;
+      --font-title: 'Cinzel', 'Playfair Display', Georgia, serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      background-color: #111827;
+      font-family: var(--font-sans);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 10px;
+      gap: 35px;
+    }
+
+    /* BARRA SUPERIOR DE NAVEGACIÓN Y CONTROL */
+    .top-bar {
+      width: 100%;
+      max-width: var(--tabloid-w);
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 12px;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .top-bar h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f3f4f6;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pill-tag {
+      background: #f59e0b;
+      color: #000;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      background: #10b981;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn:hover { background: #059669; }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #9ca3af;
+      color: #e5e7eb;
+    }
+    .btn-outline:hover { background: #374151; }
+
+    /* =========================================================
+       HOJA 1: PORTADA IMPACTO VISUAL COMPLETO (SANGRE TOTAL)
+       ========================================================= */
+    .tabloid-sheet {
+      width: var(--tabloid-w);
+      height: var(--tabloid-h);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      page-break-after: always;
+      break-after: page;
+      background: #022c22;
+    }
+
+    /* FOTOGRAFÍA DE FONDO QUE ABARCA EL 100% */
+    .hero-photo-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .hero-photo-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 38%;
+      display: block;
+      filter: brightness(0.92) contrast(1.08) saturate(1.1);
+    }
+
+    /* DEGRADADO OSCURO DE ALTA DEFINICIÓN PARA LECTURA PERFECTA */
+    .cover-overlay-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      background: linear-gradient(
+        180deg, 
+        rgba(2, 44, 34, 0.92) 0%, 
+        rgba(2, 44, 34, 0.55) 12%, 
+        rgba(0, 0, 0, 0.05) 32%,
+        rgba(0, 0, 0, 0.25) 55%,
+        rgba(2, 44, 34, 0.92) 78%,
+        rgba(2, 44, 34, 0.98) 100%
+      );
+    }
+
+    /* MARCO AMARILLO BOTÁNICO ICÓNICO (ESTILO REVISTA PREMIUM) */
+    .magazine-border-frame {
+      position: absolute;
+      top: 10mm;
+      left: 10mm;
+      right: 10mm;
+      bottom: 10mm;
+      border: 3px solid rgba(245, 158, 11, 0.85);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* CONTENIDO TIPOGRÁFICO DE LA PORTADA */
+    .cover-content {
+      position: relative;
+      z-index: 4;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 16mm 16mm 14mm 16mm;
+    }
+
+    /* 1. CABECERA DE LA REVISTA (MASTHEAD) */
+    .magazine-masthead {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 5px;
+      padding-top: 4px;
+    }
+
+    .masthead-tagline-top {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--color-gold);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .masthead-main-title {
+      font-family: var(--font-title);
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: 6px;
+      color: #ffffff;
+      text-transform: uppercase;
+      line-height: 1;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.9);
+      border-bottom: 2px solid var(--color-gold);
+      padding-bottom: 8px;
+      width: 100%;
+    }
+
+    .masthead-sub-banner {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding-top: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #e5e7eb;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+    }
+
+    .masthead-sub-banner span.motto {
+      color: var(--color-gold-light);
+      font-style: italic;
+    }
+
+    /* 2. ZONA CENTRAL DE LA PORTADA (NOMBRE DE LA PLANTA) */
+    .plant-hero-middle {
+      margin-top: auto;
+      margin-bottom: 18px;
+    }
+
+    .plant-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 158, 11, 0.95);
+      color: #000;
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    .plant-hero-name {
+      font-family: var(--font-serif);
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 0.95;
+      text-transform: uppercase;
+      color: #ffffff;
+      letter-spacing: -1px;
+      text-shadow: 0 5px 25px rgba(0,0,0,0.95), 0 2px 5px rgba(0,0,0,0.8);
+    }
+
+    .plant-scientific-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #a7f3d0;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+    }
+
+    .plant-scientific-row span.latin {
+      font-style: italic;
+      font-family: var(--font-serif);
+      color: #fef3c7;
+    }
+
+    /* 3. PARTE INFERIOR: REMEDIO TRADICIONAL + DATOS + CÓDIGO QR */
+    .cover-bottom-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    /* TARJETA GLASSMORPHISM DE ALTO CONTRASTE (REMEDIO DESTACADO) */
+    .remedy-glass-card {
+      background: rgba(6, 78, 59, 0.88);
+      backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(245, 158, 11, 0.6);
+      border-radius: 16px;
+      padding: 18px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    .remedy-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--color-gold);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+
+    .remedy-card-headline {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .remedy-card-body {
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: #d1fae5;
+      margin-bottom: 12px;
+    }
+
+    /* Mini etiquetas de requerimientos */
+    .cover-micro-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .micro-tag {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #f3f4f6;
+    }
+
+    .micro-tag svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--color-gold);
+    }
+
+    /* MÓDULO QR INTEGRADO EN LA PORTADA */
+    .qr-cover-card {
+      background: rgba(17, 24, 39, 0.92);
+      backdrop-filter: blur(16px);
+      border: 2px solid var(--color-gold);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .qr-badge-title {
+      background: var(--color-gold);
+      color: #000;
+      font-size: 10.5px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+
+    .qr-box-frame {
+      width: 155px;
+      height: 155px;
+      background: #ffffff;
+      padding: 8px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .qr-box-frame svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .qr-call-to-action {
+      margin-top: 8px;
+      font-size: 11.5px;
+      line-height: 1.3;
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .qr-call-to-action strong {
+      color: var(--color-gold);
+      display: block;
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* FOOTER DE PORTADA */
+    .cover-bottom-bar {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10.5px;
+      color: #9ca3af;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .cover-bottom-bar strong {
+      color: #ffffff;
+    }
+
+    /* =========================================================
+       HOJA 2: FICHA TÉCNICA EXTENDIDA
+       ========================================================= */
+    .sheet2-page {
+      background: #fbfbfa;
+      color: #1f2937;
+      padding: 16mm 16mm 14mm 16mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sheet2-page::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8mm;
+      background: linear-gradient(90deg, #064e3b 0%, #10b981 60%, #f59e0b 100%);
+    }
+
+    .sheet2-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    .sheet2-pill {
+      background: #d1fae5;
+      color: #064e3b;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .sheet2-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 800;
+      color: #064e3b;
+    }
+
+    .sheet2-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      flex: 1;
+      margin-bottom: 12px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card.full { grid-column: 1 / -1; }
+
+    .card-h {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 700;
+      color: #064e3b;
+      border-bottom: 1.5px solid #d1fae5;
+      padding-bottom: 4px;
+    }
+
+    .card-p {
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: #374151;
+    }
+
+    .cult-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 11px;
+      line-height: 1.35;
+      color: #374151;
+    }
+
+    .cult-list strong { color: #064e3b; }
+
+    .table-eco {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+    }
+
+    .table-eco th {
+      background: #f1f5f9;
+      color: #064e3b;
+      text-align: left;
+      padding: 6px 8px;
+      font-size: 10px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #cbd5e1;
+    }
+
+    .table-eco td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #334155;
+    }
+
+    .caution-panel {
+      background: #fef2f2;
+      border: 1.5px solid #fca5a5;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 10.5px;
+      color: #7f1d1d;
+      line-height: 1.4;
+    }
+
+    .caution-panel strong { color: #b91c1c; }
+
+    .pedagogy-panel {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 10.5px;
+      color: #065f46;
+      line-height: 1.4;
+    }
+
+    .sheet2-footer {
+      border-top: 1.5px solid #e2e8f0;
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      color: #64748b;
+    }
+
+    @media print {
+      body { background: transparent; padding: 0; gap: 0; }
+      .top-bar { display: none !important; }
+      .tabloid-sheet {
+        margin: 0;
+        box-shadow: none;
+        width: 100%;
+        height: 100%;
+        page-break-after: always;
+        break-after: page;
+      }
+      @page {
+        size: tabloid portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE ACCIÓN Y COMPARATIVA -->
+  <div class="top-bar">
+    <h2>
+      <span class="pill-tag">OPCIÓN 1</span>
+      <span>Portada a Sangre Total (Estilo National Geographic / Flora Viva)</span>
+    </h2>
+    <div class="btn-group">
+      <a href="opcion2_portada_marco_editorial.html" class="btn btn-outline" style="text-decoration:none;">
+        Ver Opción 2 (Marco Editorial) →
+      </a>
+      <button class="btn" onclick="window.print()">
+        Imprimir Tabloide (11x17")
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       HOJA 1: PORTADA IMPACTANTE A SANGRE TOTAL (OPCIÓN 1)
+       ========================================================================= -->
+  <div class="tabloid-sheet" id="hoja-1">
+    <!-- FOTOGRAFÍA FULL-BLEED (ABARCA TODO EL TABLOIDE) -->
+    <div class="hero-photo-cover">
+      <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1600&q=85" 
+           alt="Maguey Verde - Agave ejemplar botánico"
+           onerror="this.src='https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1600&q=85'">
+    </div>
+
+    <!-- DEGRADADO CINEMATOGRÁFICO DE LECTURA -->
+    <div class="cover-overlay-gradient"></div>
+
+    <!-- MARCO ICÓNICO AMARILLO/DORADO DE REVISTA CIENTÍFICA -->
+    <div class="magazine-border-frame"></div>
+
+    <!-- CONTENIDO EDITORIAL DE LA PORTADA -->
+    <div class="cover-content">
+      
+      <!-- 1. CABECERA / MASTHEAD -->
+      <header class="magazine-masthead">
+        <div class="masthead-tagline-top">Colección Botánica Escolar · Ejemplar N° 01</div>
+        <h1 class="masthead-main-title">HUERTO ESCOLAR DEMOSTRATIVO</h1>
+        <div class="masthead-sub-banner">
+          <span class="motto">"Del huerto a la red: medicina que se cultiva"</span>
+          <span>Muestra Anual de Ciencias y Salud</span>
+        </div>
+      </header>
+
+      <!-- 2. TITULAR MONUMENTAL DE LA PLANTA -->
+      <section class="plant-hero-middle">
+        <div class="plant-badge-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          Especie Destacada del Huerto
+        </div>
+        <div class="plant-hero-name">MAGUEY VERDE</div>
+        <div class="plant-scientific-row">
+          <span class="latin">Agave salmiana / Agave americana</span>
+          <span>·</span>
+          <span>Familia Asparagaceae</span>
+          <span>·</span>
+          <span>Mesoamérica</span>
+        </div>
+      </section>
+
+      <!-- 3. BLOQUE FLOTANTE: REMEDIO TRADICIONAL + QR CODE -->
+      <section class="cover-bottom-grid">
+        
+        <!-- TARJETA DEL REMEDIO (ARTÍCULO ESTRELLA DE LA PORTADA) -->
+        <article class="remedy-glass-card">
+          <div>
+            <div class="remedy-card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+              Remedio Tradicional Destacado
+            </div>
+            <h2 class="remedy-card-headline">El Bálsamo Ancestral: Cicatrizante y Protector Dérmico</h2>
+            <p class="remedy-card-body">
+              En la herbolaria tradicional, la pulpa y savia del maguey han sido utilizadas por siglos para <strong>acelerar la cicatrización de heridas leves, rozaduras y quemaduras superficiales</strong>, gracias a sus mucílagos calmantes y principios antisépticos naturales.
+            </p>
+          </div>
+
+          <div class="cover-micro-tags">
+            <span class="micro-tag">
+              <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              Riego: Mínimo
+            </span>
+            <span class="micro-tag">
+              <svg viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1z"/></svg>
+              Sol: Pleno Directo
+            </span>
+            <span class="micro-tag">
+              <svg viewBox="0 0 24 24"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2L7 10l-6 8h22L14 6z"/></svg>
+              Suelo: Pedregoso
+            </span>
+          </div>
+        </article>
+
+        <!-- SELLO TECNOLÓGICO: CÓDIGO QR -->
+        <aside class="qr-cover-card">
+          <div class="qr-badge-title">¡Escanea con tu Móvil!</div>
+          <div class="qr-box-frame">
+            <svg viewBox="0 0 100 100" fill="#064e3b">
+              <rect x="5" y="5" width="26" height="26" rx="3"/>
+              <rect x="9" y="9" width="18" height="18" fill="#fff" rx="1"/>
+              <rect x="13" y="13" width="10" height="10"/>
+              
+              <rect x="69" y="5" width="26" height="26" rx="3"/>
+              <rect x="73" y="9" width="18" height="18" fill="#fff" rx="1"/>
+              <rect x="77" y="13" width="10" height="10"/>
+              
+              <rect x="5" y="69" width="26" height="26" rx="3"/>
+              <rect x="9" y="73" width="18" height="18" fill="#fff" rx="1"/>
+              <rect x="13" y="77" width="10" height="10"/>
+
+              <rect x="36" y="8" width="6" height="6"/>
+              <rect x="46" y="8" width="6" height="6"/>
+              <rect x="56" y="14" width="6" height="6"/>
+              <rect x="8" y="38" width="6" height="6"/>
+              <rect x="18" y="46" width="6" height="6"/>
+              <rect x="26" y="38" width="6" height="6"/>
+              <rect x="36" y="24" width="6" height="6"/>
+              <rect x="46" y="32" width="6" height="6"/>
+              <rect x="56" y="26" width="6" height="6"/>
+              <rect x="36" y="44" width="7" height="7"/>
+              <rect x="47" y="44" width="7" height="7"/>
+              <rect x="47" y="55" width="7" height="7"/>
+              <rect x="36" y="55" width="7" height="7"/>
+              <rect x="66" y="38" width="6" height="6"/>
+              <rect x="76" y="46" width="6" height="6"/>
+              <rect x="86" y="38" width="6" height="6"/>
+              <rect x="66" y="54" width="6" height="6"/>
+              <rect x="84" y="54" width="6" height="6"/>
+              <rect x="36" y="72" width="6" height="6"/>
+              <rect x="46" y="80" width="6" height="6"/>
+              <rect x="56" y="72" width="6" height="6"/>
+              <rect x="68" y="70" width="6" height="6"/>
+              <rect x="78" y="78" width="6" height="6"/>
+              <rect x="86" y="70" width="6" height="6"/>
+              <rect x="74" y="86" width="6" height="6"/>
+              <rect x="86" y="86" width="6" height="6"/>
+            </svg>
+          </div>
+          <div class="qr-call-to-action">
+            <strong>Guía Digital Interactiva</strong>
+            Cultivo paso a paso, fotos y recetario seguro
+          </div>
+        </aside>
+
+      </section>
+
+      <!-- PIE DE LA PORTADA -->
+      <footer class="cover-bottom-bar">
+        <span>Exposición Demostrativa de Ciencias Naturales</span>
+        <span>Stand del Huerto Escolar · Tabloide 1 de 2</span>
+      </footer>
+
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       HOJA 2: FICHA TÉCNICA EXTENDIDA (IGUAL PARA AMBAS OPCIONES)
+       ========================================================================= -->
+  <div class="tabloid-sheet sheet2-page" id="hoja-2">
+    <header class="sheet2-header">
+      <div>
+        <span class="sheet2-pill">GUÍA DIGITAL Y FICHA TÉCNICA EXTENDIDA</span>
+        <h2 class="sheet2-title">MAGUEY VERDE (Agave spp.)</h2>
+      </div>
+      <div>
+        <strong style="font-family: var(--font-mono); font-size: 11px; background: #e2e8f0; padding: 4px 10px; border-radius: 6px;">
+          DOCUMENTO TÉCNICO · HOJA 2 DE 2
+        </strong>
+      </div>
+    </header>
+
+    <main class="sheet2-grid">
+      <!-- 1. MORFOLOGÍA -->
+      <article class="card">
+        <h3 class="card-h">1. Descripción Botánica y Morfología</h3>
+        <p class="card-p">
+          El <strong>maguey verde</strong> es una suculenta perenne que forma una roseta basal masiva de hojas (pencas) alargadas y carnosas. Cuenta con una epidermis cutinizada con ceras protectoras que impiden la pérdida de agua. Sus bordes poseen espinas marginales curvadas y una fuerte espina terminal que defiende la reserva hídrica de la planta en ecosistemas áridos.
+        </p>
+      </article>
+
+      <!-- 2. CULTIVO -->
+      <article class="card">
+        <h3 class="card-h">2. Dónde y Cómo Plantarlo (Guía de Cultivo)</h3>
+        <div class="cult-list">
+          <div><strong>Luz y Clima:</strong> Pleno sol directo (mínimo 6-8 horas diarias). Tolera temperaturas extremas y sequía prolongada.</div>
+          <div><strong>Sustrato:</strong> Suelos pedregosos, calizos o arenosos con drenaje perfecto para evitar asfixia radicular.</div>
+          <div><strong>Riego:</strong> Muy escaso. En huerto escolar, regar solo una vez cada 2 o 3 semanas en época seca.</div>
+          <div><strong>Propagación:</strong> Por separación de hijuelos basales durante la primavera.</div>
+        </div>
+      </article>
+
+      <!-- 3. PRINCIPIOS ACTIVOS -->
+      <article class="card">
+        <h3 class="card-h">3. Principios Activos y Usos Medicinales</h3>
+        <p class="card-p">
+          Rico en <strong>fructanos (inulinas), saponinas esteroidales y flavonoides</strong>:
+        </p>
+        <ul style="padding-left: 16px; font-size: 11px; color: #374151; line-height: 1.4;">
+          <li><strong>Cicatrizante dérmico:</strong> Desinfección de raspones y quemaduras solares leves.</li>
+          <li><strong>Antiinflamatorio:</strong> Cataplasma tradicional de penca asada sobre golpes.</li>
+          <li><strong>Prebiótico:</strong> Extracción de inulinas para la salud gastrointestinal.</li>
+        </ul>
+      </article>
+
+      <!-- 4. ECOLOGÍA -->
+      <article class="card">
+        <h3 class="card-h">4. Ventajas Ecológicas en la Escuela</h3>
+        <table class="table-eco">
+          <thead>
+            <tr>
+              <th>Área</th>
+              <th>Función en el Huerto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Protección del Suelo</strong></td>
+              <td>Raíces que amarran la tierra y frenan la erosión por viento y lluvia.</td>
+            </tr>
+            <tr>
+              <td><strong>Cerca Viva</strong></td>
+              <td>Barrera perimetral natural que protege parcelas y cultivos menores.</td>
+            </tr>
+            <tr>
+              <td><strong>Polinizadores</strong></td>
+              <td>En floración nutre abejas nativas, colibríes y murciélagos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- 5. PRECAUCIONES -->
+      <div class="card full caution-panel">
+        <strong>⚠️ Protocolo de Seguridad y Manejo Responsable en el Huerto:</strong>
+        <p style="margin-top: 4px;">
+          La savia fresca contiene cristales de oxalato de calcio y sustancias irritantes. <strong>Es obligatorio usar guantes y gafas protectoras</strong> al podar o manipular la planta en la escuela. No ingerir extractos caseros sin control médico profesional.
+        </p>
+      </div>
+
+      <!-- 6. PEDAGOGÍA -->
+      <div class="card full pedagogy-panel">
+        <strong>Propósito Pedagógico del Huerto:</strong>
+        Integrar el conocimiento popular tradicional con el método científico y las herramientas digitales, enseñando a los alumnos a investigar, cuidar y valorar el patrimonio biocultural de nuestra comunidad.
+      </div>
+    </main>
+
+    <footer class="sheet2-footer">
+      <div>Huerto Escolar Demostrativo · Proyecto "Del huerto a la red"</div>
+      <div>Ficha Técnica de Consulta · Hoja 2 de 2</div>
+    </footer>
+  </div>
+
+</body>
+</html>

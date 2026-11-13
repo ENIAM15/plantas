@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>EMSaD 52 - Epazote - Huerto Escolar</title>
+  
+  <style>
+    /* =========================================================
+       CALIBRACIÓN TABLOIDE 100% IDÉNTICA AL DOCUMENTO WORD
+       Dimensiones de página: 11.0 in x 17.0 in (279.4 x 431.8 mm)
+       Márgenes Word: Top 0.25 in (6.35 mm), Bottom 0.25 in (6.35 mm),
+       Left 0.38 in (9.65 mm), Right 0.38 in (9.65 mm)
+       ========================================================= */
+    :root {
+      --color-green-dark: #174B38;     /* Color exacto de Word */
+      --color-gold-light: #E7D7B2;     /* Dorado/arena exacto de Word */
+      --color-green-sub: #2D7654;      /* Verde de "Uso oral tradicional" */
+      --color-red-title: #B51F32;      /* Rojo exacto de "PRECAUCIÓN" */
+      --color-red-text: #8D1725;       /* Rojo texto advertencia */
+      --color-gray-footer: #64756B;    /* Gris exacto de pie de página */
+      --font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    @page {
+      size: 11in 17in; /* Tabloide */
+      margin: 0;
+    }
+
+    html, body {
+      width: 11in;
+      height: 17in;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #FFFFFF;
+      font-family: var(--font-family);
+      color: #000000;
+    }
+
+    .page-container {
+      width: 11in;
+      height: 17in;
+      padding: 0.25in 0.38in 0.25in 0.38in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    /* 1. LOGOTIPOS: EXACTAMENTE 9.95 in x 1.885 in (252.7 x 47.9 mm) */
+    .logos-row {
+      width: 9.95in;
+      height: 1.885in;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logos-row img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* 2. BANNER EMSaD 52 (VERDE OSCURO #174B38) */
+    .banner-emsad {
+      width: 10.24in;
+      margin: 0 auto;
+      background-color: var(--color-green-dark);
+      color: #FFFFFF;
+      text-align: center;
+      padding: 10px 14px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .banner-school-title {
+      font-size: 16pt;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      color: #FFFFFF;
+      line-height: 1.15;
+    }
+
+    .banner-project-sub {
+      font-size: 13pt;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      color: var(--color-gold-light);
+      margin: 4px 0;
+      line-height: 1.15;
+    }
+
+    .banner-motto {
+      font-size: 20pt;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      color: #FFFFFF;
+      line-height: 1.15;
+    }
+
+    /* 3. TESORO VIVO DE NUESTRA TIERRA */
+    .tesoro-row {
+      text-align: center;
+      font-size: 18pt;
+      font-weight: bold;
+      color: var(--color-green-dark);
+      letter-spacing: 2px;
+      margin: 4px 0;
+      flex-shrink: 0;
+    }
+
+    /* 4. FOTOGRAFÍA: EXACTAMENTE 9.95 in x 4.45 in (252.7 x 113.0 mm) */
+    .photo-row {
+      width: 9.95in;
+      height: 4.45in;
+      margin: 0 auto;
+      border: 3px solid var(--color-green-dark);
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .photo-row img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    /* 5. FRANJA NOMBRE DE LA PLANTA: EXACTAMENTE ANCHO 10.01 in */
+    .plant-bar {
+      width: 10.01in;
+      margin: 0 auto;
+      background-color: var(--color-green-dark);
+      color: #FFFFFF;
+      text-align: center;
+      padding: 10px 14px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .plant-name {
+      font-size: 48pt; /* w:sz="96" */
+      font-weight: bold;
+      letter-spacing: 2px;
+      line-height: 1.05;
+      color: #FFFFFF;
+    }
+
+    .plant-sub {
+      font-size: 18pt; /* w:sz="36" */
+      margin-top: 4px;
+    }
+
+    .plant-sub span.latin {
+      font-style: italic;
+      color: var(--color-gold-light);
+    }
+
+    .plant-sub span.normal {
+      color: #FFFFFF;
+    }
+
+    /* 6. TABLA DE 2 COLUMNAS: ANCHO TOTAL 10.0 in (6.05 in + 3.95 in) */
+    .table-cards-row {
+      width: 10.0in;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 6.05in 3.8in;
+      gap: 0.15in;
+      height: 4.8in;
+      align-items: stretch;
+      flex-shrink: 0;
+    }
+
+    /* CELDA IZQUIERDA: SABER TRADICIONAL */
+    .card-remedy {
+      background-color: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 18px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .remedy-sec-title {
+      font-size: 14pt; /* w:sz="28" */
+      font-weight: bold;
+      color: var(--color-green-dark);
+      margin-bottom: 6px;
+    }
+
+    .remedy-name-title {
+      font-size: 12pt; /* w:sz="24" */
+      font-weight: bold;
+      color: #000000;
+      margin-bottom: 2px;
+    }
+
+    .remedy-type-sub {
+      font-size: 12pt; /* w:sz="24" */
+      font-style: italic;
+      color: var(--color-green-sub);
+      margin-bottom: 8px;
+    }
+
+    .remedy-desc-p {
+      font-size: 12pt; /* w:sz="24" */
+      line-height: 1.45;
+      color: #000000;
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    .prep-heading {
+      font-size: 12pt; /* w:sz="24" */
+      font-weight: bold;
+      color: var(--color-green-dark);
+      margin-bottom: 6px;
+    }
+
+    .prep-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 12pt; /* w:sz="24" */
+      line-height: 1.35;
+      color: #000000;
+      margin-bottom: 10px;
+    }
+
+    .prep-steps strong {
+      color: var(--color-green-dark);
+    }
+
+    /* CAJA DE PRECAUCIÓN */
+    .caution-box-clean {
+      border-left: 4px solid var(--color-red-title);
+      background-color: #FFF5F5;
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .caution-title-red {
+      font-size: 12pt; /* w:sz="24" */
+      font-weight: bold;
+      color: var(--color-red-title);
+      margin-bottom: 2px;
+    }
+
+    .caution-text-red {
+      font-size: 9pt; /* w:szCs="18" */
+      line-height: 1.35;
+      color: var(--color-red-text);
+    }
+
+    /* CELDA DERECHA: EXPLORA (VERDE OSCURO #174B38) */
+    .card-explore {
+      background-color: var(--color-green-dark);
+      color: #FFFFFF;
+      border-radius: 12px;
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(23, 75, 56, 0.25);
+    }
+
+    .explore-title-white {
+      font-size: 16pt; /* w:sz="32" */
+      font-weight: bold;
+      color: #FFFFFF;
+      letter-spacing: 1.5px;
+    }
+
+    .explore-sub-gold {
+      font-size: 12pt; /* w:sz="24" */
+      font-style: italic;
+      color: var(--color-gold-light);
+      margin-top: 3px;
+    }
+
+    /* CUADRO BLANCO PARA CÓDIGO QR */
+    .qr-white-card {
+      width: 2.1in;
+      height: 2.1in;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      border: 2px solid var(--color-gold-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .qr-inner-title {
+      font-size: 10pt; /* w:sz="20" */
+      font-weight: bold;
+      color: var(--color-green-dark);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .escanea-word {
+      font-size: 14pt; /* w:sz="28" */
+      font-weight: bold;
+      color: #FFFFFF;
+      letter-spacing: 1.5px;
+    }
+
+    .escanea-sub-gold {
+      font-size: 10pt; /* w:sz="20" */
+      color: var(--color-gold-light);
+      margin-top: 2px;
+    }
+
+    /* 7. PIE DE PÁGINA */
+    .footer-section {
+      text-align: center;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .footer-main-text {
+      font-size: 14pt; /* w:sz="28" */
+      font-weight: bold;
+      color: var(--color-green-dark);
+      letter-spacing: 1px;
+    }
+
+    .footer-sub-text {
+      font-size: 8pt; /* w:sz="16" */
+      color: var(--color-gray-footer);
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-container">
+    
+    <!-- 1. TIRA OFICIAL DE LOGOS (ORIGINAL 2048 x 388) -->
+    <header class="logos-row">
+      <img src="logos_originales_2k.png" alt="Gobierno de Tabasco · Educación · 50 Aniversario · COBATAB">
+    </header>
+
+    <!-- 2. BANNER EMSaD 52 (VERDE OSCURO #174B38) -->
+    <section class="banner-emsad">
+      <div class="banner-school-title">EMSaD 52</div>
+      <div class="banner-project-sub">PROYECTO ESCOLAR  •  BOTÁNICA Y SABERES TRADICIONALES</div>
+      <div class="banner-motto">DEL HUERTO A LA RED: MEDICINA QUE SE CULTIVA</div>
+    </section>
+
+    <!-- 3. TESORO VIVO DE NUESTRA TIERRA -->
+    <div class="tesoro-row">TESORO VIVO DE NUESTRA TIERRA</div>
+
+    <!-- 4. FOTOGRAFÍA DE LA PLANTA SEMBRADA EN TIERRA -->
+    <div class="photo-row">
+      <img src="epazote_sembrado.jpg" alt="Epazote (Dysphania ambrosioides) sembrado en huerto escolar">
+    </div>
+
+    <!-- 5. FRANJA NOMBRE DE LA PLANTA -->
+    <div class="plant-bar">
+      <div class="plant-name">EPAZOTE</div>
+      <div class="plant-sub">
+        <span class="latin">Dysphania ambrosioides</span>
+        <span class="normal">  |  Planta de nuestra riqueza natural</span>
+      </div>
+    </div>
+
+    <!-- 6. TABLA DE 2 COLUMNAS (SABER TRADICIONAL + EXPLORA) -->
+    <main class="table-cards-row">
+      
+      <!-- CELDA IZQUIERDA: SABER TRADICIONAL -->
+      <article class="card-remedy">
+        <div>
+          <div class="remedy-sec-title">SABER TRADICIONAL</div>
+          <div class="remedy-name-title">Infusión digestiva y antiflatulenta</div>
+          <div class="remedy-type-sub">Uso oral tradicional</div>
+          
+          <p class="remedy-desc-p">
+            En la medicina tradicional se menciona el uso de las hojas de epazote, preparadas en infusión suave, para aliviar cólicos estomacales, indigestión, gases y ayudar a combatir parásitos intestinales.
+          </p>
+
+          <div class="prep-heading">¿Cómo se prepara?</div>
+          <div class="prep-steps">
+            <div><strong>1. Cosechar:</strong> Cortar de 3 a 5 hojas frescas del huerto y lavarlas bien con agua limpia.</div>
+            <div><strong>2. Hervir:</strong> Poner a calentar una taza de agua potable y retirar al primer hervor.</div>
+            <div><strong>3. Reposar:</strong> Agregar las hojas, tapar de 3 a 5 minutos, colar y beber tibio con moderación.</div>
+          </div>
+        </div>
+
+        <div class="caution-box-clean">
+          <div class="caution-title-red">PRECAUCIÓN</div>
+          <div class="caution-text-red">
+            Contiene ascaridol. No consumir en exceso ni de forma prolongada. Contraindicado en mujeres embarazadas, en lactancia y en niños pequeños.
+          </div>
+        </div>
+      </article>
+
+      <!-- CELDA DERECHA: EXPLORA -->
+      <aside class="card-explore">
+        <div>
+          <div class="explore-title-white">EXPLORA</div>
+          <div class="explore-sub-gold">y descubre más</div>
+        </div>
+
+        <div class="qr-white-card">
+          <div class="qr-inner-title">
+            COLOCA AQUÍ<br>EL CÓDIGO QR
+          </div>
+        </div>
+
+        <div>
+          <div class="escanea-word">ESCANEA</div>
+          <div class="escanea-sub-gold">para ver el proyecto completo</div>
+        </div>
+      </aside>
+
+    </main>
+
+    <!-- 7. PIE DE PÁGINA INSTITUCIONAL -->
+    <footer class="footer-section">
+      <div class="footer-main-text">
+        EMSaD 52  •  DEL HUERTO A LA RED: MEDICINA QUE SE CULTIVA
+      </div>
+      <div class="footer-sub-text">
+        Información sobre uso tradicional; no sustituye la valoración ni el tratamiento médico.
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>

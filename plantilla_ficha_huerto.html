@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 
+    ========================================================================
+    PLANTILLA OFICIAL REUTILIZABLE · HUERTO ESCOLAR MEDICINAL
+    Formato: TABLOIDE / DOBLE CARTA (11 x 17 pulgadas / 279.4mm x 431.8mm)
+    
+    INSTRUCCIONES PARA OTRAS PLANTAS:
+    1. Reemplaza el texto entre corchetes [NOMBRE_DE_PLANTA], etc.
+    2. Coloca la foto de la planta en la etiqueta <img> (puedes usar un archivo local como 'imagenes/romero.jpg').
+    3. Reemplaza la URL en el enlace del QR o inserta la imagen de tu código QR generado.
+    4. Abre este archivo en tu navegador (Chrome / Edge / Firefox) y presiona Ctrl + P (Imprimir).
+       Selecciona: Tamaño de Papel "Tabloid" o "11x17", Márgenes "Ninguno", y activa "Gráficos en segundo plano".
+    ========================================================================
+  -->
+  <title>Plantilla - [NOMBRE DE LA PLANTA] - Huerto Escolar</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* PALETA DE COLOR PERSONALIZABLE POR PLANTA */
+      --color-primary: #1b4332;       /* Color principal institucional */
+      --color-primary-light: #2d6a4f; /* Verde vegetal de realce */
+      --color-accent: #52b788;        /* Color de contraste */
+      --color-accent-subtle: #d8f3dc; /* Fondo suave para cápsulas y badges */
+      --color-warm-earth: #b08968;    /* Acento tierra botánico */
+      --color-warm-bg: #fbfbfa;       /* Color marfil de fondo */
+      --color-text-main: #1f2937;
+      --color-text-muted: #4b5563;
+      --color-border: #e2e8f0;
+      --color-caution: #b91c1c;
+      --color-caution-bg: #fef2f2;
+      
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --tabloid-w: 279.4mm;
+      --tabloid-h: 431.8mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      background-color: #1f2937;
+      font-family: var(--font-sans);
+      color: var(--color-text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 25px 10px;
+      gap: 30px;
+    }
+
+    .screen-toolbar {
+      width: 100%;
+      max-width: var(--tabloid-w);
+      background: #111827;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      font-size: 14px;
+    }
+
+    .btn {
+      background: #10b981;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .btn:hover { background: #059669; }
+
+    .tabloid-sheet {
+      width: var(--tabloid-w);
+      height: var(--tabloid-h);
+      background: var(--color-warm-bg);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+      padding: 18mm 18mm 14mm 18mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .tabloid-sheet::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 9mm;
+      background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 60%, var(--color-accent) 100%);
+    }
+
+    .header-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .project-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-accent-subtle);
+      color: var(--color-primary);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+
+    .project-motto {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-warm-earth);
+      font-style: italic;
+      margin-top: 3px;
+    }
+
+    .sheet-badge {
+      display: inline-block;
+      border: 1.5px solid var(--color-primary-light);
+      color: var(--color-primary);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      background: #fff;
+    }
+
+    .plant-hero-header {
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1.5px dashed #cbd5e1;
+      padding-bottom: 12px;
+    }
+
+    .plant-common-name {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--color-primary);
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .plant-scientific-name {
+      font-size: 16px;
+      color: var(--color-primary-light);
+      font-weight: 600;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .plant-scientific-name span.latin {
+      font-style: italic;
+      font-family: var(--font-display);
+    }
+
+    .plant-tag {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .sheet1-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+
+    .sheet1-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .plant-image-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      border: 1px solid var(--color-border);
+    }
+
+    .image-wrapper {
+      width: 100%;
+      height: 250px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      background: #e2e8f0;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .quick-facts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .fact-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-left: 4px solid var(--color-primary-light);
+    }
+
+    .fact-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--color-text-muted);
+    }
+
+    .fact-val {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-top: 2px;
+    }
+
+    .remedy-highlight-box {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 2px solid #86efac;
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: 0 4px 12px rgba(22, 101, 52, 0.08);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .remedy-badge-title {
+      color: #14532d;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+
+    .remedy-headline {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .remedy-text {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #166534;
+      margin-bottom: 12px;
+    }
+
+    .remedy-application-steps {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 10px 14px;
+      border-left: 3px solid #16a34a;
+      font-size: 11.5px;
+      color: #374151;
+      line-height: 1.45;
+    }
+
+    .remedy-application-steps strong {
+      color: #15803d;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .qr-interactive-container {
+      background: #ffffff;
+      border: 2.5px solid var(--color-primary);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .qr-badge-top {
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .qr-box {
+      width: 175px;
+      height: 175px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1.5px dashed #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .qr-box svg, .qr-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .qr-cta-heading {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 4px;
+    }
+
+    .qr-cta-desc {
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+      line-height: 1.35;
+      max-width: 260px;
+    }
+
+    .qr-link-url {
+      margin-top: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--color-primary-light);
+      background: #f1f5f9;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .sheet-footer {
+      border-top: 1.5px solid #e2e8f0;
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10.5px;
+      color: #64748b;
+    }
+
+    .sheet-footer strong { color: var(--color-primary); }
+
+    /* HOJA 2 ESTILOS */
+    .sheet2-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      flex: 1;
+      margin-bottom: 12px;
+    }
+
+    .section-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .section-card.full-width { grid-column: 1 / -1; }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-primary);
+      border-bottom: 1.5px solid var(--color-accent-subtle);
+      padding-bottom: 5px;
+    }
+
+    .card-body-text {
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: #334155;
+    }
+
+    .cultivation-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 11px;
+      line-height: 1.4;
+      color: #334155;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 8px;
+    }
+
+    .step-bullet {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--color-accent-subtle);
+      color: var(--color-primary);
+      font-weight: 800;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .benefit-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+      margin-top: 4px;
+    }
+
+    .benefit-table th {
+      background: #f1f5f9;
+      color: var(--color-primary);
+      font-weight: 700;
+      text-align: left;
+      padding: 6px 8px;
+      border-bottom: 2px solid #cbd5e1;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    .benefit-table td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #f1f5f9;
+      line-height: 1.35;
+      color: #334155;
+      vertical-align: top;
+    }
+
+    .benefit-table tr:nth-child(even) td { background: #fafaf9; }
+
+    .caution-box {
+      background: var(--color-caution-bg);
+      border: 1.5px solid #fca5a5;
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+
+    .caution-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--color-caution);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .caution-list {
+      list-style: disc;
+      padding-left: 18px;
+      font-size: 10.5px;
+      color: #7f1d1d;
+      line-height: 1.35;
+    }
+
+    .pedagogical-banner {
+      background: linear-gradient(90deg, #ecfdf5 0%, #f0fdf4 100%);
+      border: 1px solid #a7f3d0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 10.5px;
+      line-height: 1.4;
+      color: #065f46;
+    }
+
+    @media print {
+      body { background: transparent; padding: 0; gap: 0; }
+      .screen-toolbar { display: none !important; }
+      .tabloid-sheet {
+        margin: 0;
+        box-shadow: none;
+        width: 100%;
+        height: 100%;
+        page-break-after: always;
+        break-after: page;
+        padding: 14mm 14mm 12mm 14mm;
+      }
+      @page {
+        size: tabloid portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE ACCIÓN -->
+  <div class="screen-toolbar">
+    <div><strong>Plantilla Tabloide · Huerto Escolar Medicinal</strong> (Edita los datos y pulsa Imprimir)</div>
+    <button class="btn" onclick="window.print()">Imprimir / Guardar Tabloide en PDF</button>
+  </div>
+
+  <!-- =========================================================================
+       HOJA 1: PÓSTER DE EXHIBICIÓN / TABLOIDE
+       ========================================================================= -->
+  <div class="tabloid-sheet" id="hoja-1">
+    <!-- ENCABEZADO -->
+    <header class="header-banner">
+      <div>
+        <div class="project-pill">[NOMBRE DEL PROYECTO: HUERTO ESCOLAR DEMOSTRATIVO]</div>
+        <div class="project-motto">[LEMA: Del huerto a la red: medicina que se cultiva]</div>
+      </div>
+      <div>
+        <span class="sheet-badge">FICHA [NUMERO] · STAND DE EXHIBICIÓN</span>
+      </div>
+    </header>
+
+    <!-- TÍTULO DE LA PLANTA -->
+    <div class="plant-hero-header">
+      <div>
+        <h1 class="plant-common-name">[NOMBRE COMÚN DE LA PLANTA]</h1>
+        <div class="plant-scientific-name">
+          <span class="latin">[Nombre científico en latín]</span>
+          <span>·</span>
+          <span>Familia [Familia botánica]</span>
+          <span class="plant-tag">[Tipo de Planta, ej. Hierba Aromática]</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENIDO HOJA 1 -->
+    <main class="sheet1-grid">
+      <section class="sheet1-col">
+        <!-- FOTOGRAFÍA -->
+        <div class="plant-image-card">
+          <div class="image-wrapper">
+            <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=80" alt="Foto de la planta">
+          </div>
+        </div>
+
+        <!-- 4 DATOS RÁPIDOS -->
+        <div class="quick-facts-grid">
+          <div class="fact-card">
+            <div>
+              <div class="fact-label">Riego Requerido</div>
+              <div class="fact-val">[Bajo / Moderado / Frecuente]</div>
+            </div>
+          </div>
+          <div class="fact-card">
+            <div>
+              <div class="fact-label">Exposición Solar</div>
+              <div class="fact-val">[Pleno Sol / Semisombra]</div>
+            </div>
+          </div>
+          <div class="fact-card">
+            <div>
+              <div class="fact-label">Tipo de Suelo</div>
+              <div class="fact-val">[Drenado / Arenoso / Fértil]</div>
+            </div>
+          </div>
+          <div class="fact-card">
+            <div>
+              <div class="fact-label">Uso Primario</div>
+              <div class="fact-val">[Medicinal / Aromático / Culinario]</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet1-col">
+        <!-- REMEDIO DESTACADO -->
+        <div class="remedy-highlight-box">
+          <div>
+            <div class="remedy-badge-title">★ Remedio Tradicional Destacado</div>
+            <h2 class="remedy-headline">[Nombre del Remedio, ej: Infusión Digestiva o Cataplasma Calmante]</h2>
+            <p class="remedy-text">
+              [Breve descripción de cómo ayuda esta planta, para qué malestar se utiliza tradicionalmente y por qué es popular en la herbolaria comunitaria].
+            </p>
+          </div>
+
+          <div class="remedy-application-steps">
+            <strong>Modo de Preparación Tradicional:</strong>
+            [Pasos cortos y concisos: ej. 1. Hervir agua. 2. Infundir hojas secas durante 5 minutos. 3. Tomar tibia o aplicar tópicamente].
+            <div style="margin-top: 5px; font-size: 10px; color: #b91c1c; font-weight: 600;">
+              * Precaución: Uso tradicional escolar; no sustituye prescripción médica.
+            </div>
+          </div>
+        </div>
+
+        <!-- CÓDIGO QR -->
+        <div class="qr-interactive-container">
+          <div class="qr-badge-top">¡Escanea y Aprende Más!</div>
+          <div class="qr-box">
+            <!-- Pega aquí el SVG del QR o etiqueta <img src="qr_planta.png"> -->
+            <svg viewBox="0 0 100 100" fill="#1b4332">
+              <rect x="10" y="10" width="25" height="25" fill="#1b4332"/>
+              <rect x="65" y="10" width="25" height="25" fill="#1b4332"/>
+              <rect x="10" y="65" width="25" height="65" fill="#1b4332"/>
+              <rect x="42" y="42" width="16" height="16" fill="#1b4332"/>
+            </svg>
+          </div>
+          <h3 class="qr-cta-heading">Escanea con tu teléfono</h3>
+          <p class="qr-cta-desc">
+            Accede a la <strong>ficha digital completa</strong>: guía de siembra, recetario medicinal, videos y cuidados paso a paso.
+          </p>
+          <div class="qr-link-url">[https://huerto.escuela.edu/plantas/tu-planta]</div>
+        </div>
+      </section>
+    </main>
+
+    <!-- PIE -->
+    <footer class="sheet-footer">
+      <div>[Nombre de la Escuela / Evento Demostrativo]</div>
+      <div>Proyecto: <strong>[Nombre del Proyecto]</strong> · Hoja 1 de 2</div>
+    </footer>
+  </div>
+
+
+  <!-- =========================================================================
+       HOJA 2: FICHA TÉCNICA EXTENDIDA (DESTINO DEL QR)
+       ========================================================================= -->
+  <div class="tabloid-sheet" id="hoja-2">
+    <header class="header-banner">
+      <div>
+        <div class="project-pill">GUÍA DIGITAL Y FICHA TÉCNICA EXTENDIDA</div>
+        <div class="project-motto">[NOMBRE DE LA PLANTA] · Manual Botánico y de Cultivo</div>
+      </div>
+      <div>
+        <span class="sheet-badge">DOCUMENTO TÉCNICO · HOJA 2 DE 2</span>
+      </div>
+    </header>
+
+    <main class="sheet2-grid">
+      <!-- 1. BOTÁNICA -->
+      <article class="section-card">
+        <h2 class="card-title">1. Descripción Botánica y Morfología</h2>
+        <p class="card-body-text">
+          [Detallar forma, hojas, tallo, flores, aroma, ciclo de vida y adaptaciones bioclimáticas de la planta].
+        </p>
+      </article>
+
+      <!-- 2. CÓMO Y DÓNDE PLANTARLO -->
+      <article class="section-card">
+        <h2 class="card-title">2. Dónde y Cómo Plantarlo (Cultivo Escolar)</h2>
+        <div class="cultivation-steps">
+          <div class="step-item">
+            <span class="step-bullet">A</span>
+            <div><strong>Luz y Clima:</strong> [Requerimientos de luz solar y temperatura mínima/máxima].</div>
+          </div>
+          <div class="step-item">
+            <span class="step-bullet">B</span>
+            <div><strong>Suelo y Sustrato:</strong> [Tipo de tierra, mezcla orgánica, drenaje y pH recomendado].</div>
+          </div>
+          <div class="step-item">
+            <span class="step-bullet">C</span>
+            <div><strong>Siembra / Propagación:</strong> [Por semillas, esquejes, división de mata o hijuelos].</div>
+          </div>
+          <div class="step-item">
+            <span class="step-bullet">D</span>
+            <div><strong>Riego y Poda:</strong> [Frecuencia estacional y mantenimiento de hojas secas].</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. BENEFICIOS MEDICINALES -->
+      <article class="section-card">
+        <h2 class="card-title">3. Principios Activos y Usos Terapéuticos</h2>
+        <p class="card-body-text">
+          [Mencionar aceites esenciales, flavonoides o metabolitos y sus aplicaciones tradicionales comprobadas].
+        </p>
+      </article>
+
+      <!-- 4. IMPACTO ECOLÓGICO -->
+      <article class="section-card">
+        <h2 class="card-title">4. Ventajas Ecológicas en el Huerto</h2>
+        <table class="benefit-table">
+          <thead>
+            <tr>
+              <th style="width: 32%;">Área de Impacto</th>
+              <th>Aporte al Huerto y a la Comunidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Polinizadores</strong></td>
+              <td>[Atrae abejas, mariposas y fauna benéfica].</td>
+            </tr>
+            <tr>
+              <td><strong>Repelente Natural</strong></td>
+              <td>[Repele plagas o protege plantas contiguas].</td>
+            </tr>
+            <tr>
+              <td><strong>Suelo y Nutrientes</strong></td>
+              <td>[Aporte de materia orgánica o cobertura protectora].</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- 5. PRECAUCIONES -->
+      <article class="section-card full-width">
+        <div class="caution-box">
+          <div class="caution-title">Protocolo de Seguridad y Uso Responsable</div>
+          <ul class="caution-list">
+            <li><strong>Contraindicaciones:</strong> [Evitar en embarazo, lactancia o alergias específicas].</li>
+            <li><strong>Manejo en el Huerto:</strong> [Uso de guantes, lavado de manos o precauciones al cosechar].</li>
+            <li><strong>No a la Automedicación:</strong> La medicina tradicional complementa pero no reemplaza el diagnóstico médico profesional.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 6. PEDAGOGÍA -->
+      <div class="pedagogical-banner full-width">
+        <strong>Propósito Pedagógico del Huerto:</strong> Conectar el conocimiento ancestral con la ciencia y la tecnología para formar una comunidad escolar consciente, saludable y respetuosa de la biodiversidad.
+      </div>
+    </main>
+
+    <footer class="sheet-footer">
+      <div>[Nombre de la Escuela / Huerto Demostrativo]</div>
+      <div>Proyecto: <strong>[Nombre del Proyecto]</strong> · Hoja 2 de 2</div>
+    </footer>
+  </div>
+
+</body>
+</html>
