@@ -14,6 +14,15 @@ Fichas botánicas oficiales en formato **Tabloide (11 × 17 pulgadas)** diseñad
 5. **Maguey Morado** (*Tradescantia spathacea*) — Infusión pectoral y compresas cicatrizantes.
 6. **Albahaca** (*Ocimum basilicum*) — Infusión carminativa y sedante digestivo.
 7. **Mala Madre** (*Kalanchoe daigremontiana*) — Cataplasma dérmico cicatrizante y emoliente.
+8. **Orégano** (*Origanum vulgare*) — Infusión digestiva, antitusiva y antiséptica.
+9. **Sábila** (*Aloe vera*) — Gel regenerador dérmico y calmante estomacal.
+10. **Zacate Limón** (*Cymbopogon citratus*) — Infusión relajante, digestiva y sudorífica.
+11. **Sasafrás** (*Sassafras albidum*) — Infusión aromática y fricción antirreumática.
+12. **Incienso** (*Plectranthus madagascariensis*) — Vahos aromáticos, relajante y repelente natural.
+13. **Guayaba** (*Psidium guajava*) — Cocimiento antidiarreico y antiséptico bucal.
+14. **Naranja Agria** (*Citrus × aurantium*) — Infusión sedante de hojas y digestivo amargo.
+15. **Romero** (*Salvia rosmarinus*) — Infusión tonificante y loción capilar.
+16. **Kalanchoe** (*Kalanchoe pinnata*) — Cataplasma antiinflamatorio y cicatrizante.
 
 ---
 

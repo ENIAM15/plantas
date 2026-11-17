@@ -32,6 +32,14 @@ $logoBase64 = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("d
 $edgePath = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 
 foreach ($p in $plants) {
+    $outDocxCheck = "d:\Proyectos\Plantas\ficha_oficial_$($p.id).docx"
+    $outPdfCheck = "d:\Proyectos\Plantas\ficha_oficial_$($p.id).pdf"
+    $outPngCheck = "d:\Proyectos\Plantas\ficha_oficial_$($p.id)_HD.png"
+    if ((Test-Path -LiteralPath $outDocxCheck) -and (Test-Path -LiteralPath $outPdfCheck) -and (Test-Path -LiteralPath $outPngCheck)) {
+        Write-Host "-> Ya existen los 3 entregables para $($p.nombreComun) ($($p.id)), omitiendo."
+        continue
+    }
+
     Write-Host "=========================================="
     Write-Host "PROCESANDO: $($p.nombreComun) ($($p.id))"
     Write-Host "=========================================="
@@ -241,19 +249,21 @@ foreach ($p in $plants) {
 
     # 5. Compilar PDF con Edge headless
     $outPdf = "d:\Proyectos\Plantas\ficha_oficial_$($p.id).pdf"
-    $edgeProfile = "$env:TEMP\edge_p_$($p.id)"
-    & $edgePath --headless=new --user-data-dir="$edgeProfile" --no-pdf-header-footer --print-to-pdf="$outPdf" "$fileUri"
+    $edgeProfile = "$env:TEMP\edge_p_$($p.id)_$([System.Guid]::NewGuid().ToString('N').Substring(0,8))"
+    Start-Process -FilePath $edgePath -ArgumentList "--headless=new","--user-data-dir=$edgeProfile","--no-pdf-header-footer","--print-to-pdf=$outPdf","$fileUri" -Wait -NoNewWindow
+    Start-Sleep -Milliseconds 300
     Remove-Item -Recurse -Force $edgeProfile -ErrorAction SilentlyContinue
-    Write-Host "-> PDF creado: $outPdf"
+    Write-Host "-> PDF creado: $outPdf (Existe: $(Test-Path -LiteralPath $outPdf))"
 
     # 6. Generar captura PNG HD
     $outPng = "d:\Proyectos\Plantas\ficha_oficial_$($p.id)_HD.png"
-    $edgeProfile2 = "$env:TEMP\edge_p2_$($p.id)"
-    & $edgePath --headless=new --user-data-dir="$edgeProfile2" --window-size=1200,1854 --screenshot="$outPng" "$fileUri"
+    $edgeProfile2 = "$env:TEMP\edge_p2_$($p.id)_$([System.Guid]::NewGuid().ToString('N').Substring(0,8))"
+    Start-Process -FilePath $edgePath -ArgumentList "--headless=new","--user-data-dir=$edgeProfile2","--window-size=1200,1854","--screenshot=$outPng","$fileUri" -Wait -NoNewWindow
+    Start-Sleep -Milliseconds 300
     Remove-Item -Recurse -Force $edgeProfile2 -ErrorAction SilentlyContinue
-    Write-Host "-> PNG HD creado: $outPng"
+    Write-Host "-> PNG HD creado: $outPng (Existe: $(Test-Path -LiteralPath $outPng))"
 }
 
 Write-Host "=========================================="
-Write-Host "¡TODAS LAS 6 PLANTAS COMPLETADAS DE FORMA DEFINITIVA!"
+Write-Host "¡TODAS LAS PLANTAS FALTANTES COMPLETADAS DE FORMA DEFINITIVA!"
 Write-Host "=========================================="
