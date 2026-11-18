@@ -238,5 +238,37 @@
     "prep3Desc": " Colocar en compresa sobre la zona inflamada limpia durante 20 minutos y retirar.",
     "precaucion": "Contiene glucósidos cardíacos (bufadienólidos). Se recomienda estrictamente uso externo y tópico. Contraindicado ingerir en embarazo, lactancia, niños y cardiopatías.",
     "foto": "foto_kalanchoe.jpg"
+  },
+  {
+    "id": "epazote",
+    "nombreComun": "EPAZOTE",
+    "nombreCientifico": "Dysphania ambrosioides",
+    "remedioTitulo": "Infusión digestiva y antiflatulenta",
+    "remedioTipo": "Uso oral tradicional",
+    "remedioDesc": "En la medicina tradicional se menciona el uso de las hojas de epazote, preparadas en infusión suave, para aliviar cólicos estomacales, indigestión, gases y ayudar a combatir parásitos intestinales.",
+    "prep1Titulo": "1. Cosechar:",
+    "prep1Desc": " Cortar de 3 a 5 hojas frescas del huerto y lavarlas bien con agua limpia.",
+    "prep2Titulo": "2. Hervir:",
+    "prep2Desc": " Poner a calentar una taza de agua potable y retirar al primer hervor.",
+    "prep3Titulo": "3. Reposar:",
+    "prep3Desc": " Agregar las hojas, tapar de 3 a 5 minutos, colar y beber tibio con moderación.",
+    "precaucion": "Contiene ascaridol. No consumir en exceso ni de forma prolongada. Contraindicado en mujeres embarazadas, en lactancia y en niños pequeños.",
+    "foto": "epazote_sembrado.jpg"
+  },
+  {
+    "id": "maguey_verde",
+    "nombreComun": "MAGUEY VERDE",
+    "nombreCientifico": "Agave spp.",
+    "remedioTitulo": "Cataplasma desinflamante",
+    "remedioTipo": "Uso tópico tradicional",
+    "remedioDesc": "En la medicina tradicional se menciona el uso de la penca del maguey, preparada y aplicada externamente, para aliviar golpes, torceduras o molestias articulares leves.",
+    "prep1Titulo": "1. Ablandar:",
+    "prep1Desc": " Calentar un trozo de penca en un comal hasta que se suavice y oscurezca ligeramente.",
+    "prep2Titulo": "2. Abrir:",
+    "prep2Desc": " Con guantes, partirla longitudinalmente para exponer la pulpa interior tibia.",
+    "prep3Titulo": "3. Aplicar:",
+    "prep3Desc": " Colocar la parte carnosa tibia sobre la zona afectada y sujetar con una venda limpia.",
+    "precaucion": "La savia cruda puede irritar piel y ojos por presencia de oxalatos y saponinas. Usar guantes y protección al manipularla. No aplicar sobre heridas abiertas.",
+    "foto": "foto_opt_maguey_verde.jpg"
   }
 ]

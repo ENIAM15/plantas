@@ -23,35 +23,30 @@ function New-ZipWithForwardSlashes($sourceDir, $zipPath) {
     $zipStream.Dispose()
 }
 
-$jsonContent = Get-Content "d:\Proyectos\Plantas\plantas_metadata.json" -Raw -Encoding UTF8
+$jsonContent = Get-Content "$PSScriptRoot\plantas_metadata.json" -Raw -Encoding UTF8
 $plants = $jsonContent | ConvertFrom-Json
 
 # Base XML de Word extraído del template del usuario
-$baseXml = Get-Content "d:\Proyectos\Plantas\docx_extracted\word\document.xml" -Raw -Encoding UTF8
-$logoBase64 = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("d:\Proyectos\Plantas\logos_originales_2k.png"))
+$baseXml = Get-Content "$PSScriptRoot\docx_extracted\word\document.xml" -Raw -Encoding UTF8
+$logoBase64 = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("$PSScriptRoot\logos_originales_2k.png"))
+$qrBase64 = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("$PSScriptRoot\qr_sitio_emsad52.png"))
 $edgePath = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 
 foreach ($p in $plants) {
-    $outDocxCheck = "d:\Proyectos\Plantas\ficha_oficial_$($p.id).docx"
-    $outPdfCheck = "d:\Proyectos\Plantas\ficha_oficial_$($p.id).pdf"
-    $outPngCheck = "d:\Proyectos\Plantas\ficha_oficial_$($p.id)_HD.png"
-    if ((Test-Path -LiteralPath $outDocxCheck) -and (Test-Path -LiteralPath $outPdfCheck) -and (Test-Path -LiteralPath $outPngCheck)) {
-        Write-Host "-> Ya existen los 3 entregables para $($p.nombreComun) ($($p.id)), omitiendo."
-        continue
-    }
-
     Write-Host "=========================================="
     Write-Host "PROCESANDO: $($p.nombreComun) ($($p.id))"
     Write-Host "=========================================="
 
     $tempDir = "$env:TEMP\docx_build_$($p.id)_$([System.Guid]::NewGuid().ToString('N'))"
     if (Test-Path -LiteralPath $tempDir) { Remove-Item -LiteralPath $tempDir -Recurse -Force }
-    Copy-Item -LiteralPath "d:\Proyectos\Plantas\docx_extracted" -Destination $tempDir -Recurse
+    Copy-Item -LiteralPath "$PSScriptRoot\docx_extracted" -Destination $tempDir -Recurse
 
     # 1. Recortar e incrustar foto en DOCX
-    $fotoSrcPath = "d:\Proyectos\Plantas\$($p.foto)"
+    $fotoSrcPath = "$PSScriptRoot\$($p.foto)"
     if (Test-Path -LiteralPath $fotoSrcPath) {
-        $srcImg = [System.Drawing.Image]::FromFile($fotoSrcPath)
+        $srcBytes = [System.IO.File]::ReadAllBytes($fotoSrcPath)
+        $ms = New-Object System.IO.MemoryStream(,$srcBytes)
+        $srcImg = [System.Drawing.Image]::FromStream($ms)
         $targetWidth = 1191
         $targetHeight = 855
         $bmp = New-Object System.Drawing.Bitmap($targetWidth, $targetHeight)
@@ -83,12 +78,13 @@ foreach ($p in $plants) {
         $bmp.Save($destPng, [System.Drawing.Imaging.ImageFormat]::Png)
 
         # También guardar una versión optimizada en disco para el HTML/PDF
-        $fotoOptimizada = "d:\Proyectos\Plantas\foto_opt_$($p.id).jpg"
+        $fotoOptimizada = "$PSScriptRoot\foto_opt_$($p.id).jpg"
         $bmp.Save($fotoOptimizada, [System.Drawing.Imaging.ImageFormat]::Jpeg)
 
         $g.Dispose()
         $bmp.Dispose()
         $srcImg.Dispose()
+        $ms.Dispose()
         Write-Host "-> Foto recortada correctamente a 1191x855 px"
     }
 
@@ -110,13 +106,13 @@ foreach ($p in $plants) {
     [System.IO.File]::WriteAllText("$tempDir\word\document.xml", $xml, [System.Text.Encoding]::UTF8)
 
     # 3. Empaquetar DOCX oficial
-    $outDocx = "d:\Proyectos\Plantas\ficha_oficial_$($p.id).docx"
+    $outDocx = "$PSScriptRoot\ficha_oficial_$($p.id).docx"
     New-ZipWithForwardSlashes $tempDir $outDocx
     Remove-Item -LiteralPath $tempDir -Recurse -Force
     Write-Host "-> DOCX creado: $outDocx"
 
     # 4. Generar HTML fiel con Base64 incrustado para evitar cualquier caché de Edge
-    $photoBytes = [System.IO.File]::ReadAllBytes("d:\Proyectos\Plantas\foto_opt_$($p.id).jpg")
+    $photoBytes = [System.IO.File]::ReadAllBytes("$PSScriptRoot\foto_opt_$($p.id).jpg")
     $photoBase64 = [System.Convert]::ToBase64String($photoBytes)
 
     $htmlContent = @"
@@ -174,7 +170,8 @@ foreach ($p in $plants) {
     .card-explore { background-color: var(--color-green-dark); color: #FFFFFF; border-radius: 12px; padding: 18px 14px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; box-shadow: 0 3px 10px rgba(23, 75, 56, 0.25); }
     .explore-title-white { font-size: 16pt; font-weight: bold; color: #FFFFFF; letter-spacing: 1.5px; }
     .explore-sub-gold { font-size: 12pt; font-style: italic; color: var(--color-gold-light); margin-top: 3px; }
-    .qr-white-card { width: 2.1in; height: 2.1in; background-color: #FFFFFF; border-radius: 10px; border: 2px solid var(--color-gold-light); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+    .qr-white-card { width: 2.1in; height: 2.1in; background-color: #FFFFFF; border-radius: 10px; border: 2px solid var(--color-gold-light); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+    .qr-white-card img { width: 100%; height: 100%; object-fit: contain; display: block; }
     .qr-inner-title { font-size: 10pt; font-weight: bold; color: var(--color-green-dark); text-align: center; line-height: 1.3; }
     .escanea-word { font-size: 14pt; font-weight: bold; color: #FFFFFF; letter-spacing: 1.5px; }
     .escanea-sub-gold { font-size: 10pt; color: var(--color-gold-light); margin-top: 2px; }
@@ -225,7 +222,7 @@ foreach ($p in $plants) {
           <div class="explore-sub-gold">y descubre más</div>
         </div>
         <div class="qr-white-card">
-          <div class="qr-inner-title">COLOCA AQUÍ<br>EL CÓDIGO QR</div>
+          <img src="data:image/png;base64,$qrBase64" alt="Código QR EMSaD 52">
         </div>
         <div>
           <div class="escanea-word">ESCANEA</div>
@@ -242,13 +239,13 @@ foreach ($p in $plants) {
 </html>
 "@
 
-    $htmlPath = "d:\Proyectos\Plantas\ficha_$($p.id).html"
+    $htmlPath = "$PSScriptRoot\ficha_$($p.id).html"
     [System.IO.File]::WriteAllText($htmlPath, $htmlContent, [System.Text.Encoding]::UTF8)
 
     $fileUri = "file:///" + $htmlPath.Replace('\', '/')
 
     # 5. Compilar PDF con Edge headless
-    $outPdf = "d:\Proyectos\Plantas\ficha_oficial_$($p.id).pdf"
+    $outPdf = "$PSScriptRoot\ficha_oficial_$($p.id).pdf"
     $edgeProfile = "$env:TEMP\edge_p_$($p.id)_$([System.Guid]::NewGuid().ToString('N').Substring(0,8))"
     Start-Process -FilePath $edgePath -ArgumentList "--headless=new","--user-data-dir=$edgeProfile","--no-pdf-header-footer","--print-to-pdf=$outPdf","$fileUri" -Wait -NoNewWindow
     Start-Sleep -Milliseconds 300
@@ -256,7 +253,7 @@ foreach ($p in $plants) {
     Write-Host "-> PDF creado: $outPdf (Existe: $(Test-Path -LiteralPath $outPdf))"
 
     # 6. Generar captura PNG HD
-    $outPng = "d:\Proyectos\Plantas\ficha_oficial_$($p.id)_HD.png"
+    $outPng = "$PSScriptRoot\ficha_oficial_$($p.id)_HD.png"
     $edgeProfile2 = "$env:TEMP\edge_p2_$($p.id)_$([System.Guid]::NewGuid().ToString('N').Substring(0,8))"
     Start-Process -FilePath $edgePath -ArgumentList "--headless=new","--user-data-dir=$edgeProfile2","--window-size=1200,1854","--screenshot=$outPng","$fileUri" -Wait -NoNewWindow
     Start-Sleep -Milliseconds 300

@@ -9,8 +9,8 @@ window.PLANTAS_EMSAD52 = [
     categorias: ["Piel y Cicatrizantes", "Digestivas"],
     esToxica: false,
     foto: "foto_opt_maguey_verde.jpg",
-    pdfUrl: null,
-    docxUrl: "plantilla_original.docx",
+    pdfUrl: "ficha_oficial_maguey_verde.pdf",
+    docxUrl: "ficha_oficial_maguey_verde.docx",
     resumenCorto: "Suculenta robusta de pencas carnosas usada tradicionalmente en cataplasmas desinflamantes para golpes y torceduras.",
     caracteristicas: {
       tipo: "Planta suculenta perenne de porte arrosetado",
