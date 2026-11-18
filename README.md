@@ -28,6 +28,8 @@ Fichas botánicas oficiales en formato **Tabloide (11 × 17 pulgadas)** diseñad
 
 ## 📁 Estructura del Repositorio
 
+- **`index.html` y `plantas_web_data.js`**: Sitio web institucional interactivo del **EMSaD 52 — Ejido Vicente Guerrero** con información botánica extendida de las 17 plantas (características, lugares de cultivo, principios activos, audio guía e impresión de hoja resumen).
+- **`qr_sitio_emsad52.png`**: Código QR oficial único del catálogo web (`https://eniam15.github.io/plantas/`).
 - **`ficha_oficial_<planta>.docx`**: Documento editable en Microsoft Word con la estructura, tipografía (Georgia), paleta institucional y tamaños oficiales exactos.
 - **`ficha_oficial_<planta>.pdf`**: Archivo listo para impresión profesional en tamaño Tabloide (11 × 17 in) en 1 sola página estricta y vectores nítidos.
 - **`ficha_oficial_<planta>_HD.png`**: Vista previa digital en alta definición (1200 × 1854 px).

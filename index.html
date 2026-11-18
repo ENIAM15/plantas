@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMSaD 52 • Ejido Vicente Guerrero | Del Huerto a la Red: Medicina que se Cultiva</title>
+  <meta name="description" content="Catálogo botánico digital del proyecto escolar EMSaD 52, Ejido Vicente Guerrero, COBATAB Tabasco. Plantas medicinales, características, cultivo y saberes tradicionales.">
+  <style>
+    :root {
+      --green-dark: #174B38;
+      --green-deeper: #0E3325;
+      --green-mid: #2D7654;
+      --green-soft: #EDF5F0;
+      --gold-light: #E7D7B2;
+      --gold-border: #C8A45D;
+      --red-title: #B51F32;
+      --red-text: #8D1725;
+      --red-bg: #FFF5F5;
+      --gray-muted: #5A6B62;
+      --bg-page: #F6F7F5;
+      --card-bg: #FFFFFF;
+      --font-serif: Georgia, 'Times New Roman', serif;
+      --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --shadow-sm: 0 2px 8px rgba(23, 75, 56, 0.08);
+      --shadow-md: 0 8px 24px rgba(23, 75, 56, 0.12);
+      --shadow-lg: 0 18px 45px rgba(14, 51, 37, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-page);
+      color: #1A2420;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== ENCABEZADO OFICIAL CON LOGOTIPOS ===== */
+    .top-logos-bar {
+      background-color: #FFFFFF;
+      border-bottom: 3px solid var(--gold-border);
+      padding: 12px 16px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .top-logos-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .top-logos-inner img {
+      width: 100%;
+      max-width: 860px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* ===== HERO INSTITUCIONAL ===== */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-deeper) 100%);
+      color: #FFFFFF;
+      padding: 40px 20px 44px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 5px solid var(--gold-border);
+      text-align: center;
+    }
+
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      background-image: radial-gradient(circle at 20% 25%, #E7D7B2 2px, transparent 2.5px),
+                        radial-gradient(circle at 80% 70%, #E7D7B2 2px, transparent 2.5px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .hero-institution-tag {
+      display: inline-block;
+      background: rgba(231, 215, 178, 0.14);
+      border: 1px solid rgba(231, 215, 178, 0.45);
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .hero-school-name {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 6vw, 4.1rem);
+      font-weight: 700;
+      letter-spacing: 2px;
+      line-height: 1.05;
+      color: #FFFFFF;
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.28);
+      margin-bottom: 8px;
+    }
+
+    .hero-ejido-name {
+      font-family: var(--font-serif);
+      font-size: clamp(1.25rem, 3.2vw, 2rem);
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 1.2px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-divider {
+      width: 110px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+      margin: 0 auto 18px;
+    }
+
+    .hero-motto {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #FFFFFF;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 720px;
+      margin: 0 auto 24px;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .stat-pill {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(231, 215, 178, 0.3);
+      backdrop-filter: blur(4px);
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      color: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .stat-pill strong {
+      color: var(--gold-light);
+      font-family: var(--font-serif);
+    }
+
+    /* ===== BARRA DE BÚSQUEDA Y FILTROS ===== */
+    .controls-section {
+      max-width: 1180px;
+      margin: -24px auto 26px;
+      padding: 0 16px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .controls-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(23, 75, 56, 0.12);
+    }
+
+    .search-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      flex: 1;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: var(--green-mid);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 13px 16px 13px 44px;
+      border: 2px solid #DCE5DF;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: var(--font-sans);
+      color: #1A2420;
+      background: #FAFBF9;
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--green-dark);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(23, 75, 56, 0.1);
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .filter-btn {
+      border: 1.5px solid #D3E0D8;
+      background: #FFFFFF;
+      color: var(--green-dark);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--green-mid);
+      background: var(--green-soft);
+    }
+
+    .filter-btn.active {
+      background: var(--green-dark);
+      color: #FFFFFF;
+      border-color: var(--green-dark);
+      box-shadow: 0 3px 10px rgba(23, 75, 56, 0.22);
+    }
+
+    .results-count {
+      margin-left: auto;
+      font-size: 0.88rem;
+      color: var(--gray-muted);
+      font-weight: 600;
+    }
+
+    /* ===== CATÁLOGO DE PLANTAS ===== */
+    .catalog-container {
+      max-width: 1180px;
+      margin: 0 auto 56px;
+      padding: 0 16px;
+    }
+
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: var(--green-dark);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .plants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 22px;
+    }
+
+    .plant-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(23, 75, 56, 0.12);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+    }
+
+    .plant-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--gold-border);
+    }
+
+    .card-image-wrap {
+      position: relative;
+      height: 215px;
+      overflow: hidden;
+      background: #E4ECE7;
+      border-bottom: 3px solid var(--green-dark);
+    }
+
+    .card-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .plant-card:hover .card-image-wrap img {
+      transform: scale(1.06);
+    }
+
+    .card-badges {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .badge-family {
+      background: rgba(23, 75, 56, 0.88);
+      backdrop-filter: blur(4px);
+      color: var(--gold-light);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(231, 215, 178, 0.35);
+    }
+
+    .badge-caution {
+      background: rgba(181, 31, 50, 0.92);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .card-body {
+      padding: 18px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .card-latin {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--green-mid);
+      margin-bottom: 10px;
+    }
+
+    .card-summary {
+      font-size: 0.92rem;
+      color: #3A4741;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .tag-chip {
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .card-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid #EAF0EC;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--green-dark);
+    }
+
+    .card-cta span.arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--green-soft);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .plant-card:hover .card-cta span.arrow {
+      background: var(--green-dark);
+      color: #FFFFFF;
+      transform: translateX(3px);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 50px 20px;
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1px dashed #BFD0C6;
+      color: var(--gray-muted);
+      display: none;
+    }
+
+    /* ===== MODAL DE FICHA EXTENDIDA ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 32, 24, 0.72);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      display: none;
+      overflow-y: auto;
+      padding: 20px 12px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-sheet {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 920px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 2px solid var(--gold-border);
+      margin: auto;
+      animation: modalFadeIn 0.25s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(16px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-topbar {
+      background: var(--green-dark);
+      color: #FFFFFF;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--gold-border);
+    }
+
+    .modal-topbar-brand {
+      font-family: var(--font-serif);
+      font-size: 0.92rem;
+      color: var(--gold-light);
+      font-weight: 700;
+      letter-spacing: 0.8px;
+    }
+
+    .modal-close-btn {
+      background: rgba(255, 255, 255, 0.16);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .modal-hero {
+      position: relative;
+      height: 300px;
+      background: #143D2E;
+      overflow: hidden;
+    }
+
+    .modal-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(14, 51, 37, 0.94) 10%, rgba(14, 51, 37, 0.35) 55%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px 26px;
+      color: #FFFFFF;
+    }
+
+    .modal-plant-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      line-height: 1.05;
+    }
+
+    .modal-plant-meta {
+      font-family: var(--font-serif);
+      font-size: 1.08rem;
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .modal-plant-meta .latin {
+      font-style: italic;
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    .modal-other-names {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.88);
+      margin-top: 6px;
+    }
+
+    .modal-actions-bar {
+      background: var(--green-soft);
+      padding: 14px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 1px solid #D5E2DA;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 15px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1.5px solid var(--green-dark);
+      background: #FFFFFF;
+      color: var(--green-dark);
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      background: var(--green-dark);
+      color: #FFFFFF;
+    }
+
+    .action-btn.primary {
+      background: var(--green-dark);
+      color: #FFFFFF;
+    }
+
+    .action-btn.primary:hover {
+      background: var(--green-deeper);
+    }
+
+    .action-btn.speaking {
+      background: var(--gold-light);
+      color: var(--green-deeper);
+      border-color: var(--gold-border);
+    }
+
+    .modal-content-body {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .detail-section {
+      border: 1px solid #E2EAE5;
+      border-radius: 14px;
+      padding: 20px;
+      background: #FFFFFF;
+    }
+
+    .detail-section.cultivo-section {
+      background: #F4F9F6;
+      border-color: #C7DDD0;
+    }
+
+    .detail-section.remedy-section {
+      border-left: 5px solid var(--green-dark);
+    }
+
+    .detail-sec-header {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 2px solid var(--gold-light);
+      padding-bottom: 8px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .info-item {
+      background: #FAFBF9;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #E8EFEA;
+    }
+
+    .cultivo-section .info-item {
+      background: #FFFFFF;
+    }
+
+    .info-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--green-mid);
+      margin-bottom: 4px;
+    }
+
+    .info-val {
+      font-size: 0.94rem;
+      color: #202C27;
+    }
+
+    .remedy-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #111815;
+    }
+
+    .remedy-sub {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--green-mid);
+      font-size: 0.96rem;
+      margin-bottom: 10px;
+    }
+
+    .remedy-desc {
+      font-size: 0.96rem;
+      margin-bottom: 14px;
+      color: #24302B;
+    }
+
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-card {
+      background: var(--green-soft);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.94rem;
+    }
+
+    .step-card strong {
+      color: var(--green-dark);
+    }
+
+    .caution-box {
+      border-left: 5px solid var(--red-title);
+      background: var(--red-bg);
+      padding: 16px 18px;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .caution-box-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--red-title);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .caution-box-text {
+      font-size: 0.94rem;
+      color: var(--red-text);
+      font-weight: 500;
+    }
+
+    .modal-footer-nav {
+      background: #F4F7F5;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid #DCE5DF;
+      flex-wrap: wrap;
+    }
+
+    /* ===== SECCIÓN QR Y PIE DE PÁGINA ===== */
+    .qr-footer-banner {
+      max-width: 1180px;
+      margin: 0 auto 40px;
+      padding: 0 16px;
+    }
+
+    .qr-box-card {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #103A2B 100%);
+      color: #FFFFFF;
+      border-radius: 18px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      border: 2px solid var(--gold-border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .qr-info {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .qr-info h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .qr-info p {
+      font-size: 0.96rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 14px;
+    }
+
+    .qr-thumb-wrap {
+      background: #FFFFFF;
+      padding: 12px;
+      border-radius: 14px;
+      border: 3px solid var(--gold-border);
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .qr-thumb-wrap img {
+      width: 148px;
+      height: 148px;
+      display: block;
+    }
+
+    .qr-thumb-caption {
+      margin-top: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      letter-spacing: 0.5px;
+    }
+
+    footer.site-footer {
+      background: var(--green-deeper);
+      color: rgba(255, 255, 255, 0.88);
+      text-align: center;
+      padding: 28px 16px;
+      border-top: 4px solid var(--gold-border);
+    }
+
+    .footer-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+
+    .footer-disclaimer {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Toast de notificación */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--green-deeper);
+      color: var(--gold-light);
+      border: 1.5px solid var(--gold-border);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      z-index: 2000;
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .hero-banner { padding: 28px 14px 36px; }
+      .modal-hero { height: 220px; }
+      .modal-content-body { padding: 16px; gap: 16px; }
+      .modal-actions-bar { padding: 12px 16px; }
+      .action-btn { flex: 1 1 auto; justify-content: center; font-size: 0.82rem; }
+      .qr-box-card { justify-content: center; text-align: center; }
+    }
+
+    /* ===== MODO IMPRESIÓN (HOJA RESUMEN) ===== */
+    @media print {
+      body { background: #FFFFFF; }
+      .hero-banner, .controls-section, .catalog-container, .qr-footer-banner, .site-footer,
+      .modal-close-btn, .modal-actions-bar, .modal-footer-nav {
+        display: none !important;
+      }
+      .top-logos-bar {
+        border-bottom: 2px solid #174B38;
+        box-shadow: none;
+        padding: 6px 0;
+      }
+      .modal-overlay.open {
+        position: static;
+        display: block;
+        background: #FFFFFF;
+        padding: 0;
+      }
+      .modal-sheet {
+        box-shadow: none;
+        border: none;
+        max-width: 100%;
+      }
+      .modal-hero { height: 190px; }
+      .detail-section { break-inside: avoid; padding: 12px; }
+      .modal-content-body { padding: 14px 0; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ENCABEZADO OFICIAL CON LOGOTIPOS -->
+  <header class="top-logos-bar">
+    <div class="top-logos-inner">
+      <img src="logos_originales_2k.png" alt="Logotipos Oficiales Gobierno de Tabasco, Secretaría de Educación, 50 Aniversario y COBATAB">
+    </div>
+  </header>
+
+  <!-- HERO INSTITUCIONAL -->
+  <section class="hero-banner">
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-institution-tag">Colegio de Bachilleres de Tabasco • COBATAB</div>
+      <h1 class="hero-school-name">EMSaD 52</h1>
+      <div class="hero-ejido-name">
+        <span>📍 Ejido Vicente Guerrero</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-motto">DEL HUERTO A LA RED: MEDICINA QUE SE CULTIVA</div>
+      <p class="hero-subtitle">
+        Toca cualquier planta de nuestro jardín botánico escolar para conocer sus características físicas, lugares donde se cultiva, principios activos, receta tradicional y precauciones de uso.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-pill">🌿 <strong>17</strong> Especies Medicinales</div>
+        <div class="stat-pill">📍 <strong>Cultivo Local</strong> y Nacional</div>
+        <div class="stat-pill">🔊 <strong>Audio Guía</strong> Integrada</div>
+        <div class="stat-pill">🖨️ <strong>Hoja Resumen</strong> Imprimible</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSCADOR Y FILTROS -->
+  <section class="controls-section">
+    <div class="controls-card">
+      <div class="search-row">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="Buscar planta por nombre, nombre científico, uso o padecimiento (ej. tos, digestión, heridas)...">
+        </div>
+      </div>
+      <div class="filter-pills" id="filterPills">
+        <button class="filter-btn active" data-cat="Todas">Todas (17)</button>
+        <button class="filter-btn" data-cat="Digestivas">Digestivas</button>
+        <button class="filter-btn" data-cat="Respiratorias">Respiratorias</button>
+        <button class="filter-btn" data-cat="Piel y Cicatrizantes">Piel y Cicatrizantes</button>
+        <button class="filter-btn" data-cat="Relajantes y Aromáticas">Relajantes y Aromáticas</button>
+        <button class="filter-btn" data-cat="Uso Externo / Precaución">Uso Externo / Precaución</button>
+        <span class="results-count" id="resultsCount">Mostrando 17 plantas</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO INTERACTIVO -->
+  <main class="catalog-container">
+    <h2 class="section-heading">🌱 Huerto Medicinal Escolar — Toca una planta para explorar</h2>
+    <div class="plants-grid" id="plantsGrid"></div>
+    <div class="empty-state" id="emptyState">
+      <h3>No se encontraron plantas con ese criterio</h3>
+      <p>Intenta borrar el texto de búsqueda o seleccionar la categoría "Todas".</p>
+    </div>
+  </main>
+
+  <!-- SECCIÓN QR OFICIAL DEL SITIO -->
+  <section class="qr-footer-banner">
+    <div class="qr-box-card">
+      <div class="qr-info">
+        <h3>📱 Acceso Directo con Código QR Único</h3>
+        <p>
+          Este es el código QR oficial del catálogo interactivo del <strong>EMSaD 52 (Ejido Vicente Guerrero)</strong>. Al escanearlo desde cualquier teléfono móvil en la exposición, los visitantes acceden al instante a toda la información botánica ampliada de las 17 plantas medicinales.
+        </p>
+        <a href="qr_sitio_emsad52.png" download="QR_Proyecto_EMSaD52_Vicente_Guerrero.png" class="action-btn" style="border-color: var(--gold-light);">
+          ⬇️ Descargar Imagen del Código QR
+        </a>
+      </div>
+      <div class="qr-thumb-wrap">
+        <img src="qr_sitio_emsad52.png" alt="Código QR Oficial EMSaD 52 Ejido Vicente Guerrero">
+        <div class="qr-thumb-caption">ESCANEA PARA EXPLORAR</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIE DE PÁGINA INSTITUCIONAL -->
+  <footer class="site-footer">
+    <div class="footer-title">COBATAB • Centro EMSaD 52 — Ejido Vicente Guerrero, Tabasco</div>
+    <p class="footer-disclaimer">
+      Proyecto Escolar: Botánica y Saberes Tradicionales — "Del Huerto a la Red: Medicina que se Cultiva".<br>
+      Información sobre uso tradicional con fines educativos y culturales; no sustituye la valoración ni el tratamiento médico profesional.
+    </p>
+  </footer>
+
+  <!-- MODAL DE DETALLE COMPLETO DE PLANTA -->
+  <div class="modal-overlay" id="plantModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-sheet">
+      <div class="modal-topbar">
+        <div class="modal-topbar-brand">EMSaD 52 • EJIDO VICENTE GUERRERO • FICHA BOTÁNICA EXTENDIDA</div>
+        <button class="modal-close-btn" id="closeModalBtn">✕ Cerrar</button>
+      </div>
+
+      <div class="modal-hero">
+        <img id="modalImg" src="" alt="">
+        <div class="modal-hero-overlay">
+          <h2 class="modal-plant-title" id="modalTitle"></h2>
+          <div class="modal-plant-meta">
+            <span class="latin" id="modalLatin"></span>
+            <span>|</span>
+            <span id="modalFamily"></span>
+          </div>
+          <div class="modal-other-names" id="modalOtherNames"></div>
+        </div>
+      </div>
+
+      <div class="modal-actions-bar">
+        <button class="action-btn primary" id="speakBtn">🔊 Escuchar Ficha</button>
+        <button class="action-btn" id="printBtn">🖨️ Imprimir Hoja Resumen</button>
+        <a class="action-btn" id="pdfLinkBtn" href="#" target="_blank" rel="noopener">📄 Ver Cartel PDF</a>
+        <button class="action-btn" id="shareBtn">🔗 Copiar Enlace</button>
+      </div>
+
+      <div class="modal-content-body">
+        <!-- 1. CARACTERÍSTICAS BOTÁNICAS -->
+        <section class="detail-section">
+          <h3 class="detail-sec-header">🔬 Características Botánicas y Morfología</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <div class="info-label">Tipo de Planta</div>
+              <div class="info-val" id="valTipo"></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Altura / Porte</div>
+              <div class="info-val" id="valAltura"></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Origen Geográfico</div>
+              <div class="info-val" id="valOrigen"></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Hojas</div>
+              <div class="info-val" id="valHojas"></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Tallos y Flores</div>
+              <div class="info-val" id="valTallosFlores"></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Aroma Característico</div>
+              <div class="info-val" id="valAroma"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. LUGARES DONDE SE PLANTA Y CULTIVO -->
+        <section class="detail-section cultivo-section">
+          <h3 class="detail-sec-header">🌍 Lugares donde se Planta y Cuidados de Cultivo</h3>
+          <div class="info-grid">
+            <div class="info-item" style="grid-column: 1 / -1;">
+              <div class="info-label">Lugares de Cultivo (México, Tabasco y Comunidad)</div>
+              <div class="info-val" id="valLugares"></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Clima y Exposición Solar</div>
+              <div class="info-val" id="valClimaLuz"></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Tipo de Suelo y Riego</div>
+              <div class="info-val" id="valSueloRiego"></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Cómo se Siembra / Propagación</div>
+              <div class="info-val" id="valPropagacion"></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Época Recomendada</div>
+              <div class="info-val" id="valEpoca"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. PROPIEDADES Y PRINCIPIOS ACTIVOS -->
+        <section class="detail-section">
+          <h3 class="detail-sec-header">⚗️ Principios Activos y Propiedades</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <div class="info-label">Compuestos Fitoquímicos</div>
+              <div class="info-val" id="valPrincipios"></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Usos Tradicionales Documentados</div>
+              <div class="info-val" id="valUsos"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. SABER TRADICIONAL Y PREPARACIÓN -->
+        <section class="detail-section remedy-section">
+          <h3 class="detail-sec-header">🌿 Saber Tradicional — ¿Cómo se prepara?</h3>
+          <div class="remedy-title" id="valRemedioTitulo"></div>
+          <div class="remedy-sub" id="valRemedioTipo"></div>
+          <p class="remedy-desc" id="valRemedioDesc"></p>
+          <div class="steps-list" id="valPasos"></div>
+        </section>
+
+        <!-- 5. PRECAUCIONES -->
+        <div class="caution-box">
+          <div class="caution-box-title">⚠️ PRECAUCIÓN Y CONTRAINDICACIONES</div>
+          <div class="caution-box-text" id="valPrecaucion"></div>
+        </div>
+      </div>
+
+      <div class="modal-footer-nav">
+        <button class="action-btn" id="prevPlantBtn">← Planta Anterior</button>
+        <button class="action-btn primary" id="bottomCloseBtn">Volver al Catálogo</button>
+        <button class="action-btn" id="nextPlantBtn">Siguiente Planta →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Enlace copiado al portapapeles</div>
+
+  <script src="plantas_web_data.js"></script>
+  <script>
+    (function () {
+      const plants = window.PLANTAS_EMSAD52 || [];
+      const grid = document.getElementById('plantsGrid');
+      const emptyState = document.getElementById('emptyState');
+      const searchInput = document.getElementById('searchInput');
+      const filterPills = document.getElementById('filterPills');
+      const resultsCount = document.getElementById('resultsCount');
+
+      const modal = document.getElementById('plantModal');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const bottomCloseBtn = document.getElementById('bottomCloseBtn');
+      const speakBtn = document.getElementById('speakBtn');
+      const printBtn = document.getElementById('printBtn');
+      const pdfLinkBtn = document.getElementById('pdfLinkBtn');
+      const shareBtn = document.getElementById('shareBtn');
+      const prevPlantBtn = document.getElementById('prevPlantBtn');
+      const nextPlantBtn = document.getElementById('nextPlantBtn');
+      const toast = document.getElementById('toast');
+
+      let activeCategory = 'Todas';
+      let currentPlantIndex = -1;
+      let isSpeaking = false;
+
+      function normalizeText(str) {
+        return (str || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      }
+
+      function renderGrid() {
+        const query = normalizeText(searchInput.value.trim());
+        const filtered = plants.filter(p => {
+          const matchesCat = activeCategory === 'Todas' || (p.categorias && p.categorias.includes(activeCategory));
+          if (!matchesCat) return false;
+          if (!query) return true;
+          const haystack = normalizeText([
+            p.nombreComun,
+            p.nombreCientifico,
+            p.familia,
+            p.otrosNombres,
+            p.resumenCorto,
+            p.remedio.titulo,
+            p.remedio.descripcion,
+            p.propiedades.usosTradicionales,
+            p.cultivo.lugares
+          ].join(' '));
+          return haystack.includes(query);
+        });
+
+        grid.innerHTML = '';
+        resultsCount.textContent = `Mostrando ${filtered.length} de ${plants.length} plantas`;
+
+        if (filtered.length === 0) {
+          emptyState.style.display = 'block';
+          return;
+        }
+        emptyState.style.display = 'none';
+
+        filtered.forEach(p => {
+          const card = document.createElement('article');
+          card.className = 'plant-card';
+          card.setAttribute('tabindex', '0');
+          card.innerHTML = `
+            <div class="card-image-wrap">
+              <img src="${p.foto}" alt="${p.nombreComun}" loading="lazy">
+              <div class="card-badges">
+                <span class="badge-family">${p.familia}</span>
+                ${p.esToxica ? '<span class="badge-caution">⚠️ Uso Externo / Precaución</span>' : ''}
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">${p.nombreComun}</h3>
+              <div class="card-latin">${p.nombreCientifico}</div>
+              <p class="card-summary">${p.resumenCorto}</p>
+              <div class="card-tags">
+                ${p.categorias.map(c => `<span class="tag-chip">${c}</span>`).join('')}
+              </div>
+              <div class="card-cta">
+                <span>Explorar ficha completa</span>
+                <span class="arrow">→</span>
+              </div>
+            </div>
+          `;
+          card.addEventListener('click', () => openModal(p.id));
+          card.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openModal(p.id);
+            }
+          });
+          grid.appendChild(card);
+        });
+      }
+
+      function stopSpeech() {
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+        }
+        isSpeaking = false;
+        speakBtn.textContent = '🔊 Escuchar Ficha';
+        speakBtn.classList.remove('speaking');
+      }
+
+      function openModal(id, updateUrl = true) {
+        const idx = plants.findIndex(item => item.id === id);
+        if (idx === -1) return;
+        currentPlantIndex = idx;
+        const p = plants[idx];
+
+        stopSpeech();
+
+        document.getElementById('modalImg').src = p.foto;
+        document.getElementById('modalImg').alt = p.nombreComun;
+        document.getElementById('modalTitle').textContent = p.nombreComun;
+        document.getElementById('modalLatin').textContent = p.nombreCientifico;
+        document.getElementById('modalFamily').textContent = `Familia: ${p.familia}`;
+        document.getElementById('modalOtherNames').textContent = `También conocida como: ${p.otrosNombres}`;
+
+        document.getElementById('valTipo').textContent = p.caracteristicas.tipo;
+        document.getElementById('valAltura').textContent = p.caracteristicas.altura;
+        document.getElementById('valOrigen').textContent = p.caracteristicas.origen;
+        document.getElementById('valHojas').textContent = p.caracteristicas.hojas;
+        document.getElementById('valTallosFlores').textContent = p.caracteristicas.tallosFlores;
+        document.getElementById('valAroma').textContent = p.caracteristicas.aroma;
+
+        document.getElementById('valLugares').textContent = p.cultivo.lugares;
+        document.getElementById('valClimaLuz').textContent = p.cultivo.climaLuz;
+        document.getElementById('valSueloRiego').textContent = p.cultivo.sueloRiego;
+        document.getElementById('valPropagacion').textContent = p.cultivo.propagacion;
+        document.getElementById('valEpoca').textContent = p.cultivo.epocaSiembra;
+
+        document.getElementById('valPrincipios').textContent = p.propiedades.principiosActivos;
+        document.getElementById('valUsos').textContent = p.propiedades.usosTradicionales;
+
+        document.getElementById('valRemedioTitulo').textContent = p.remedio.titulo;
+        document.getElementById('valRemedioTipo').textContent = p.remedio.tipo;
+        document.getElementById('valRemedioDesc').textContent = p.remedio.descripcion;
+
+        const pasosEl = document.getElementById('valPasos');
+        pasosEl.innerHTML = p.remedio.pasos.map(s => `
+          <div class="step-card"><strong>${s.titulo}</strong> ${s.texto}</div>
+        `).join('');
+
+        document.getElementById('valPrecaucion').textContent = p.precaucion;
+
+        if (p.pdfUrl) {
+          pdfLinkBtn.style.display = 'inline-flex';
+          pdfLinkBtn.href = p.pdfUrl;
+          pdfLinkBtn.textContent = '📄 Ver Cartel PDF';
+        } else if (p.docxUrl) {
+          pdfLinkBtn.style.display = 'inline-flex';
+          pdfLinkBtn.href = p.docxUrl;
+          pdfLinkBtn.textContent = '📄 Descargar Plantilla Word';
+        } else {
+          pdfLinkBtn.style.display = 'none';
+        }
+
+        modal.classList.add('open');
+        modal.scrollTop = 0;
+        document.body.style.overflow = 'hidden';
+
+        if (updateUrl && window.history && window.history.replaceState) {
+          const newUrl = new URL(window.location.href);
+          newUrl.searchParams.set('planta', p.id);
+          window.history.replaceState({}, '', newUrl);
+        }
+      }
+
+      function closeModal() {
+        stopSpeech();
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        if (window.history && window.history.replaceState) {
+          const newUrl = new URL(window.location.href);
+          newUrl.searchParams.delete('planta');
+          window.history.replaceState({}, '', newUrl);
+        }
+      }
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      }
+
+      // Eventos de filtros y búsqueda
+      searchInput.addEventListener('input', renderGrid);
+      filterPills.addEventListener('click', e => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeCategory = btn.getAttribute('data-cat');
+        renderGrid();
+      });
+
+      // Eventos del modal
+      closeModalBtn.addEventListener('click', closeModal);
+      bottomCloseBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+
+      prevPlantBtn.addEventListener('click', () => {
+        const prevIdx = (currentPlantIndex - 1 + plants.length) % plants.length;
+        openModal(plants[prevIdx].id);
+      });
+
+      nextPlantBtn.addEventListener('click', () => {
+        const nextIdx = (currentPlantIndex + 1) % plants.length;
+        openModal(plants[nextIdx].id);
+      });
+
+      // Audio guía
+      speakBtn.addEventListener('click', () => {
+        if (!('speechSynthesis' in window)) {
+          showToast('Tu navegador no soporta lectura por voz.');
+          return;
+        }
+        if (isSpeaking) {
+          stopSpeech();
+          return;
+        }
+        const p = plants[currentPlantIndex];
+        const speechText = `${p.nombreComun}, nombre científico ${p.nombreCientifico}. ` +
+          `${p.resumenCorto} ` +
+          `Lugares donde se cultiva: ${p.cultivo.lugares} ` +
+          `Uso tradicional: ${p.remedio.titulo}. ${p.remedio.descripcion} ` +
+          `Precaución: ${p.precaucion}`;
+
+        const utter = new SpeechSynthesisUtterance(speechText);
+        utter.lang = 'es-MX';
+        utter.rate = 0.98;
+        utter.onend = stopSpeech;
+        utter.onerror = stopSpeech;
+
+        isSpeaking = true;
+        speakBtn.textContent = '⏹️ Detener Audio';
+        speakBtn.classList.add('speaking');
+        window.speechSynthesis.speak(utter);
+      });
+
+      // Imprimir hoja resumen
+      printBtn.addEventListener('click', () => {
+        window.print();
+      });
+
+      // Compartir enlace directo
+      shareBtn.addEventListener('click', () => {
+        const url = window.location.href;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(() => {
+            showToast('Enlace de la planta copiado');
+          }).catch(() => showToast('Copia el enlace desde tu navegador'));
+        } else {
+          showToast('Copia el enlace desde tu navegador');
+        }
+      });
+
+      // Inicializar grilla y comprobar ?planta= en URL
+      renderGrid();
+      const params = new URLSearchParams(window.location.search);
+      const plantaParam = params.get('planta');
+      if (plantaParam) {
+        openModal(plantaParam, false);
+      }
+    })();
+  </script>
+</body>
+</html>
